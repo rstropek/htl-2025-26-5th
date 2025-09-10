@@ -1,0 +1,202 @@
+<UserControl
+    x:Class="AvaloniaBasics.Views.CalculatorView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:AvaloniaBasics.ViewModels"
+    x:DataType="vm:CalculatorViewModel"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code.
+        -->
+        <vm:CalculatorViewModel />
+    </Design.DataContext>
+
+    <UserControl.Styles>
+        <!-- 
+            Simple styles to make the form look nice
+            TODO: Make yourself familiar with styling in Avalonia 
+                  (https://docs.avaloniaui.net/docs/basics/user-interface/styling/styles)
+        -->
+
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#F5F5F5" />
+            <Setter Property="BorderBrush" Value="#D0D0D0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        
+        <!-- Note the use of pseudo classes here (https://docs.avaloniaui.net/docs/basics/user-interface/styling/style-classes#pseudo-classes) -->
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#007ACC" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        
+        <Style Selector="ComboBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#F5F5F5" />
+            <Setter Property="BorderBrush" Value="#D0D0D0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Background" Value="#007ACC" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#005A9E" />
+        </Style>
+        
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#004578" />
+        </Style>
+        
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="#6C757D" />
+        </Style>
+        
+        <Style Selector="Button.secondary:pointerover">
+            <Setter Property="Background" Value="#5A6268" />
+        </Style>
+        
+        <!-- Read more about selectors at https://docs.avaloniaui.net/docs/basics/user-interface/styling/styles#the-selector -->
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Margin" Value="5,5,5,2" />
+            <Setter Property="Foreground" Value="#333333" />
+        </Style>
+        
+        <Style Selector="TextBlock.result">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Foreground" Value="#007ACC" />
+        </Style>
+        
+        <Style Selector="Border.container">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BoxShadow" Value="0 2 10 #19000000" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Margin" Value="20" />
+        </Style>
+        
+        <Style Selector="NumericUpDown">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#F5F5F5" />
+            <Setter Property="BorderBrush" Value="#D0D0D0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        
+        <Style Selector="NumericUpDown:focus">
+            <Setter Property="BorderBrush" Value="#007ACC" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        
+        <Style Selector="TextBlock.title">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+            <Setter Property="Foreground" Value="#007ACC" />
+        </Style>
+        
+        <Style Selector="Border.result-container">
+            <Setter Property="Background" Value="#E8F4FD" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="Margin" Value="5,20,5,5" />
+        </Style>
+        
+        <Style Selector="StackPanel.button-panel">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,20,0,0" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border Classes="container">
+        <!--
+            Note the use of Grid here. It is used to create a form layout with rows and columns.
+            TODO: Make yourself familiar with Grid (https://docs.avaloniaui.net/docs/reference/controls/grid/)
+        -->
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto,*">
+            <!-- Title -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+                       Classes="title"
+                       Text="Simple Calculator" />
+
+            <!-- First Number -->
+            <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Classes="label"
+                       Text="First Number:" 
+                       VerticalAlignment="Center" />
+            <NumericUpDown Grid.Row="1" Grid.Column="1" 
+                           Value="{Binding FirstNumber}"
+                           Watermark="Enter first number" />
+
+            <!-- Operator -->
+            <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Classes="label"
+                       Text="Operator:" 
+                       VerticalAlignment="Center" />
+            <ComboBox Grid.Row="2" Grid.Column="1" 
+                      ItemsSource="{Binding Operators}"
+                      SelectedItem="{Binding SelectedOperator}" />
+
+            <!-- Second Number -->
+            <TextBlock Grid.Row="3" Grid.Column="0" 
+                       Classes="label"
+                       Text="Second Number:" 
+                       VerticalAlignment="Center" />
+            <NumericUpDown Grid.Row="3" Grid.Column="1" 
+                           Value="{Binding SecondNumber}"
+                           Watermark="Enter second number" />
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" 
+                        Classes="button-panel">
+                <Button Content="Calculate" 
+                        Command="{Binding CalculateCommand}" />
+                <Button Content="Clear" 
+                        Classes="secondary"
+                        Command="{Binding ClearCommand}" />
+            </StackPanel>
+
+            <!-- Result -->
+            <TextBlock Grid.Row="5" Grid.Column="0" 
+                       Classes="label"
+                       Text="Result:" 
+                       VerticalAlignment="Center" 
+                       Margin="0,20,5,2" />
+            <Border Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" 
+                    Classes="result-container">
+                <TextBlock Classes="result"
+                           Text="{Binding ResultText}" 
+                           HorizontalAlignment="Center" 
+                           TextAlignment="Center" />
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

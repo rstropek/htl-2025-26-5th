@@ -1,0 +1,20 @@
+<!--
+    TODO: Make yourself familiar with user controls in Avalonia
+          (https://docs.avaloniaui.net/docs/basics/user-interface/controls/creating-controls/choosing-a-custom-control-type#usercontrol)
+-->
+<UserControl
+    x:Class="AvaloniaBasics.Views.MessageBoxAndTracesControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+
+    <StackPanel Margin="20" Spacing="10">
+        <Button Name="ShowMessageButton" Content="Show Message Box" Click="ShowMessageButton_Click" />
+        <Button Name="ShowPopupButton" Content="Show Popup" Click="ShowPopupButton_Click" />
+        <Button Name="ShowYesNoButton" Content="Show Yes/No Message Box" Click="ShowYesNoButton_Click" />
+        <Button Name="WriteTraceButton" Content="Write Trace Message" Click="WriteTraceButton_Click" />
+    </StackPanel>
+
+</UserControl>

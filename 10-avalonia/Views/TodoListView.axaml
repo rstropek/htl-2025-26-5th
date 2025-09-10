@@ -1,0 +1,219 @@
+<UserControl
+    x:Class="AvaloniaBasics.Views.TodoListView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:AvaloniaBasics.ViewModels"
+    xmlns:models="using:AvaloniaBasics.Models"
+    x:DataType="vm:TodoListViewModel"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:TodoListViewModel />
+    </Design.DataContext>
+
+    <UserControl.Styles>
+        <!-- 
+            You should already be familiar with styles from the CalculatorControl.
+            If not, revisit that control first.
+        -->
+
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#F5F5F5" />
+            <Setter Property="BorderBrush" Value="#D0D0D0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#007ACC" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Background" Value="#007ACC" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#005A9E" />
+        </Style>
+        
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#004578" />
+        </Style>
+        
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="#6C757D" />
+        </Style>
+        
+        <Style Selector="Button.secondary:pointerover">
+            <Setter Property="Background" Value="#5A6268" />
+        </Style>
+        
+        <Style Selector="Button.danger">
+            <Setter Property="Background" Value="#DC3545" />
+        </Style>
+        
+        <Style Selector="Button.danger:pointerover">
+            <Setter Property="Background" Value="#C82333" />
+        </Style>
+        
+        <Style Selector="Button.small">
+            <Setter Property="Padding" Value="6,4" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Margin" Value="5,5,5,2" />
+            <Setter Property="Foreground" Value="#333333" />
+        </Style>
+        
+        <Style Selector="CheckBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        
+        <Style Selector="Border.container">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BoxShadow" Value="0 2 10 #19000000" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Margin" Value="20" />
+        </Style>
+        
+        <Style Selector="Border.todoItem">
+            <Setter Property="Background" Value="#F8F9FA" />
+            <Setter Property="BorderBrush" Value="#E9ECEF" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,2" />
+        </Style>
+        
+        <Style Selector="Border.todoItem.completed">
+            <Setter Property="Background" Value="#E8F5E8" />
+            <Setter Property="BorderBrush" Value="#C3E6C3" />
+        </Style>
+        
+        <Style Selector="TextBlock.todoText">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        
+        <Style Selector="TextBlock.todoText.completed">
+            <Setter Property="TextDecorations" Value="Strikethrough" />
+            <Setter Property="Foreground" Value="#6C757D" />
+        </Style>
+        
+        <Style Selector="TextBlock.title">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+            <Setter Property="Foreground" Value="#007ACC" />
+        </Style>
+        
+        <Style Selector="StackPanel.action-buttons">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+        </Style>
+        
+        <Style Selector="TextBlock.status">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,15,0,0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="#6C757D" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border Classes="container">
+        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto">
+            <!-- Title -->
+            <TextBlock Grid.Row="0" 
+                       Classes="title"
+                       Text="Todo List" />
+
+            <!-- Add new todo form -->
+            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,20">
+                <TextBlock Classes="label" Text="Add New Todo:" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBox Grid.Column="0" 
+                             Text="{Binding NewTodoText}"
+                             Watermark="Enter a new todo item..."
+                             Name="NewTodoTextBox" />
+                    <Button Grid.Column="1" 
+                            Content="Add" 
+                            Command="{Binding AddTodoCommand}" />
+                </Grid>
+            </StackPanel>
+
+            <!-- Action buttons -->
+            <StackPanel Grid.Row="2" 
+                        Classes="action-buttons">
+                <Button Content="Clear All" 
+                        Classes="secondary small"
+                        Command="{Binding ClearAllCommand}" />
+                <Button Content="Clear Completed" 
+                        Classes="danger small"
+                        Command="{Binding ClearCompletedCommand}" />
+            </StackPanel>
+
+            <!-- Todo items list -->
+            <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding TodoItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="models:TodoItem">
+                            <Border Classes="todoItem" Classes.completed="{Binding IsDone}">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <!-- Checkbox -->
+                                    <CheckBox Grid.Column="0" 
+                                              IsChecked="{Binding IsDone}" />
+                                    
+                                    <!-- Todo text -->
+                                    <TextBlock Grid.Column="1" 
+                                               Classes="todoText"
+                                               Classes.completed="{Binding IsDone}"
+                                               Text="{Binding Text}" 
+                                               Margin="10,0" />
+                                    
+                                    <!-- 
+                                        Delete button. Note that this command binding is more complicated as
+                                        we need to bind to a relay command in the parent ViewModel. For that,
+                                        Avalonia has the $parent syntax.
+                                        TODO: Read https://docs.avaloniaui.net/docs/guides/data-binding/binding-to-controls#binding-to-an-ancestor
+                                              to learn more about this syntax.
+                                    -->
+                                    <Button Grid.Column="2" 
+                                            Content="Delete" 
+                                            Classes="danger small"
+                                            Command="{Binding $parent[UserControl].((vm:TodoListViewModel)DataContext).DeleteTodoCommand}"
+                                            CommandParameter="{Binding}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <!-- Status text -->
+            <TextBlock Grid.Row="4" 
+                       Classes="status"
+                       Text="{Binding TodoItems.Count, StringFormat='Total: {0} items'}" />
+        </Grid>
+    </Border>
+</UserControl>

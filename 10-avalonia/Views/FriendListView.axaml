@@ -1,0 +1,213 @@
+<UserControl
+    x:Class="AvaloniaBasics.Views.FriendListView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:AvaloniaBasics.ViewModels"
+    xmlns:models="using:AvaloniaBasics.Models"
+    x:DataType="vm:FriendListViewModel"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:FriendListViewModel />
+    </Design.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Background" Value="#007ACC" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#005A9E" />
+        </Style>
+        
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#004578" />
+        </Style>
+        
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="#6C757D" />
+        </Style>
+        
+        <Style Selector="Button.secondary:pointerover">
+            <Setter Property="Background" Value="#5A6268" />
+        </Style>
+        
+        <Style Selector="Button.danger">
+            <Setter Property="Background" Value="#DC3545" />
+        </Style>
+        
+        <Style Selector="Button.danger:pointerover">
+            <Setter Property="Background" Value="#C82333" />
+        </Style>
+        
+        <Style Selector="Button.small">
+            <Setter Property="Padding" Value="6,4" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        
+        <Style Selector="Border.container">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BoxShadow" Value="0 2 10 #19000000" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Margin" Value="20" />
+        </Style>
+        
+        <Style Selector="TextBlock.title">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+            <Setter Property="Foreground" Value="#007ACC" />
+        </Style>
+        
+        <Style Selector="StackPanel.action-buttons">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+        </Style>
+        
+        <Style Selector="TextBlock.status">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,15,0,0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="#6C757D" />
+        </Style>
+
+        <Style Selector="DataGrid">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="RowBackground" Value="White" />
+            <Setter Property="BorderBrush" Value="#E9ECEF" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#E9ECEF" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="CanUserReorderColumns" Value="True" />
+            <Setter Property="CanUserResizeColumns" Value="True" />
+            <Setter Property="CanUserSortColumns" Value="True" />
+            <Setter Property="IsReadOnly" Value="False" />
+            <Setter Property="SelectionMode" Value="Single" />
+        </Style>
+
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="Background" Value="#007ACC" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="BorderBrush" Value="#005A9E" />
+            <Setter Property="BorderThickness" Value="0,0,1,0" />
+        </Style>
+
+        <Style Selector="DataGridRow:selected">
+            <Setter Property="Background" Value="#E3F2FD" />
+        </Style>
+
+        <Style Selector="DataGridRow:pointerover">
+            <Setter Property="Background" Value="#F5F5F5" />
+        </Style>
+
+        <Style Selector="DataGridRow:nth-child(even)">
+            <Setter Property="Background" Value="#F8F9FA" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border Classes="container">
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <!-- Title -->
+            <TextBlock Grid.Row="0" 
+                       Classes="title"
+                       Text="Friend Management" />
+
+            <!-- Action buttons -->
+            <StackPanel Grid.Row="1" 
+                        Classes="action-buttons">
+                <Button Content="Add Random Friend" 
+                        Command="{Binding AddRandomFriendCommand}" />
+                <Button Content="Clear All" 
+                        Classes="secondary small"
+                        Command="{Binding ClearAllCommand}" />
+            </StackPanel>
+
+            <!-- 
+                Note the use of a DataGrid to display friends.
+                TODO: Read https://docs.avaloniaui.net/docs/reference/controls/datagrid/ to
+                      learn more about data grids in Avalonia.
+            -->
+            <DataGrid Grid.Row="2" 
+                      ItemsSource="{Binding Friends}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Margin="0,10">
+                
+                <DataGrid.Columns>
+                    <!-- First Name Column -->
+                    <DataGridTextColumn Header="First Name" 
+                                        Binding="{Binding FirstName}" 
+                                        Width="120"
+                                        CanUserSort="True" />
+                    
+                    <!-- Last Name Column -->
+                    <DataGridTextColumn Header="Last Name" 
+                                        Binding="{Binding LastName}" 
+                                        Width="120"
+                                        CanUserSort="True" />
+                    
+                    <!-- Email Column -->
+                    <DataGridTextColumn Header="Email" 
+                                        Binding="{Binding Email}" 
+                                        Width="200"
+                                        CanUserSort="True" />
+                    
+                    <!-- Phone Column -->
+                    <DataGridTextColumn Header="Phone" 
+                                        Binding="{Binding Phone}" 
+                                        Width="140"
+                                        CanUserSort="True" />
+                    
+                    <!-- Age Column (calculated property) -->
+                    <DataGridTextColumn Header="Age" 
+                                        Binding="{Binding Age}" 
+                                        Width="60"
+                                        CanUserSort="True" />
+                    
+                    <!-- Date of Birth Column -->
+                    <DataGridTextColumn Header="Date of Birth" 
+                                        Binding="{Binding DateOfBirth, StringFormat=yyyy-MM-dd}" 
+                                        Width="120"
+                                        CanUserSort="True" />
+                    
+                    <!-- Delete Button Column -->
+                    <DataGridTemplateColumn Header="Actions" 
+                                            Width="80"
+                                            CanUserSort="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="models:Friend">
+                                <Button Content="Delete"
+                                        Classes="danger small"
+                                        Command="{Binding $parent[UserControl].((vm:FriendListViewModel)DataContext).DeleteFriendCommand}"
+                                        CommandParameter="{Binding}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Status text -->
+            <TextBlock Grid.Row="3" 
+                       Classes="status"
+                       Text="{Binding Friends.Count, StringFormat='Total: {0} friends'}" />
+        </Grid>
+    </Border>
+</UserControl>

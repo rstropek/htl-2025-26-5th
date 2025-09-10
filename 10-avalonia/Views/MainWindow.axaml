@@ -1,0 +1,69 @@
+<Window
+    x:Class="AvaloniaBasics.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:AvaloniaBasics.ViewModels"
+    xmlns:v="using:AvaloniaBasics.Views"
+    xmlns:views="using:AvaloniaBasics.Views"
+    Title="AvaloniaBasics"
+    d:DesignHeight="900" Height="900"
+    d:DesignWidth="1500" Width="1500"
+    x:DataType="v:MainWindow"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+    <!-- 
+        Note the use of DockPanel (https://api-docs.avaloniaui.net/docs/T_Avalonia_Controls_DockPanel)
+        TODO: Make yourself familiar with panels in general (base class of DockPanel, 
+              see https://api-docs.avaloniaui.net/docs/T_Avalonia_Controls_Panel)
+    -->
+    <DockPanel>
+        <!--
+            This is how you create a pull-down menu (Menu, MenuItem)
+            TODO: Make yourself familiar with menus (https://docs.avaloniaui.net/docs/reference/controls/menu)
+        -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Close" />
+            </MenuItem>
+        </Menu>
+
+        <!--
+            TabControl is a great way to organize content (TabControl, TabItem)
+            Read more at https://docs.avaloniaui.net/docs/reference/controls/tabcontrol
+        -->        
+        <TabControl>
+            <TabItem Header="Messages and Traces">
+                <!-- 
+                    Note that it is very simple to organize your application into user controls.
+                    TODO: Try to find out what the XML namespace "views" is doing, where it is defined,
+                          and how it relates to C# namespaces.
+                -->
+                <views:MessageBoxAndTracesControl />
+            </TabItem>
+            <TabItem Header="Data Binding">
+                <!--
+                    Now we bind directly to the CalculatorViewModel. The ViewLocator will
+                    automatically resolve this to CalculatorView and set its DataContext.
+                -->
+                <ContentControl Content="{Binding CalculatorViewModel}" />
+            </TabItem>
+            <TabItem Header="Todo List">
+                <!--
+                    Similarly, we bind directly to the TodoListViewModel. The ViewLocator will
+                    automatically resolve this to TodoListView and set its DataContext.
+                -->
+                <ContentControl Content="{Binding TodoListViewModel}" />
+            </TabItem>
+            <TabItem Header="Friend Management">
+                <!--
+                    Similarly, we bind directly to the FriendListViewModel. The ViewLocator will
+                    automatically resolve this to FriendListView and set its DataContext.
+                -->
+                <ContentControl Content="{Binding FriendListViewModel}" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
