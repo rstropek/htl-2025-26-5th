@@ -15,9 +15,19 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
+    <!-- Some code to demonstrate how to access the DB -->
     <StackPanel>
         <Button Command="{Binding AddSampleDataCommand}">Add Sample Data</Button>
         <Button Command="{Binding GetFirstSampleRowCommand}">Load Data</Button>
     </StackPanel>
+
+    <!--
+    Tips for UI:
+    - Use a Grid as the main layout container
+    - Use an ItemsControl with a WrapPanel to display the products
+    - Use an ItemsControl (simple) or DataGrid (advanced; see https://github.com/rstropek/htl-2025-26-5th/blob/19c0c658ff3e4185a6a58b94cfde0e447fac864d/10-avalonia/Views/FriendListView.axaml#L146)
+      to display the receipt lines
+    - Use a Button for "Checkout"
+    -->
 
 </Window>
