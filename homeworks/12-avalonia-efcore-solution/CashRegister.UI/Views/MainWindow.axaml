@@ -1,0 +1,176 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CashRegister.UI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
+        x:Class="CashRegister.UI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Cash Register Exercise">
+
+    <Design.DataContext>
+        <!-- Design-time DataContext for preview only -->
+    </Design.DataContext>
+
+    <Window.Styles>
+        <!-- Product Button Style -->
+        <Style Selector="Button.ProductButton">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        
+        <!-- Product Name TextBlock Style -->
+        <Style Selector="TextBlock.ProductName">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        
+        <!-- Product Price TextBlock Style -->
+        <Style Selector="TextBlock.ProductPrice">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+        
+        <!-- DataGrid Column Header Style -->
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8,4"/>
+        </Style>
+        
+        <!-- DataGrid Cell Text Style -->
+        <Style Selector="DataGrid TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        
+        <!-- Total Price Border Style -->
+        <Style Selector="Border.TotalPriceBorder">
+            <Setter Property="Background" Value="LightYellow"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        
+        <!-- Total Price Label Style -->
+        <Style Selector="TextBlock.TotalPriceLabel">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+        
+        <!-- Total Price Value Style -->
+        <Style Selector="TextBlock.TotalPriceValue">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+        
+        <!-- Checkout Button Style -->
+        <Style Selector="Button.CheckoutButton">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Product buttons section -->
+        <ScrollViewer Grid.Column="0" Margin="10">
+            <ItemsControl ItemsSource="{Binding Products}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button 
+                            Command="{Binding $parent[ItemsControl].((vm:MainWindowViewModel)DataContext).AddProductCommand}"
+                            CommandParameter="{Binding}"
+                            Classes="ProductButton">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ProductName}" 
+                                          Classes="ProductName"/>
+                                <TextBlock Text="{Binding UnitPrice, StringFormat='{}{0:C}'}" 
+                                          Classes="ProductPrice"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Receipt section -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Receipt lines -->
+            <!--
+                NOTE: Using DataGrid is optional for the upcoming
+                      exam. If you use DataGrid, DO NOT FORGET to
+                      add the styles for DataGrid in App.axaml.
+            -->
+            <DataGrid Grid.Row="0"
+                      ItemsSource="{Binding ReceiptLines}"
+                      AutoGenerateColumns="False"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="True"
+                      CanUserSortColumns="False"
+                      IsReadOnly="True"
+                      GridLinesVisibility="Horizontal"
+                      HeadersVisibility="Column">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Product" 
+                                        Binding="{Binding ProductName}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Qty" 
+                                        Binding="{Binding Amount}"
+                                        Width="80"/>
+                    <DataGridTextColumn Header="Total" 
+                                        Binding="{Binding TotalPrice, StringFormat=C}"
+                                        Width="80"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Empty space for visual separation -->
+            <Border Grid.Row="1" Height="10"/>
+
+            <!-- Total price -->
+            <Border Grid.Row="2" 
+                    Classes="TotalPriceBorder">
+                <StackPanel>
+                    <TextBlock Text="Gesamtsumme:" 
+                               Classes="TotalPriceLabel"/>
+                    <TextBlock Text="{Binding TotalPrice, StringFormat='{}{0:C}'}" 
+                               Classes="TotalPriceValue"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Checkout button -->
+            <Button Grid.Row="3" 
+                    Command="{Binding CheckoutCommand}"
+                    Content="Checkout"
+                    Classes="CheckoutButton" />
+        </Grid>
+    </Grid>
+</Window>
