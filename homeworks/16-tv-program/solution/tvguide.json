@@ -1,0 +1,528 @@
+[
+  {
+    "channel": "ORF 1",
+    "programs": [
+      {
+        "startTime": "06:00",
+        "title": "King Julien",
+        "subtitle": "okidoki Kinderprogramm mit: Neue Folge: Zurück im Königreich - Zeichentrick USA 2017",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "06:22",
+        "title": "Mister Paper",
+        "subtitle": "Start der Serie: Mister Paper geht spazieren - Zeichentrick NLD/BEL/DEU 2021",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "06:27",
+        "title": "Mister Paper",
+        "subtitle": "Mister Paper geht schlafen - Zeichentrick NLD/BEL/DEU 2021",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "06:32",
+        "title": "Mister Paper",
+        "subtitle": "Mister Paper kann sich nicht entscheiden - Zeichentrick NLD/BEL/DEU 2021",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "06:38",
+        "title": "Dora 3D",
+        "subtitle": "Neue Folge: Riesengroßer Boots / Backpack in der Klemme - Zeichentrick USA 2025",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "07:00",
+        "title": "Servus Kasperl",
+        "subtitle": "Kasperl & Buffi: Zirkus Tintifax - Puppenspiel AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "07:25",
+        "title": "Rätselburg",
+        "subtitle": "AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "07:29",
+        "title": "Hallo okidoki",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "07:34",
+        "title": "ABC Bär",
+        "subtitle": "Puppenspiel AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "07:48",
+        "title": "Hallo okidoki",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "07:55",
+        "title": "Tolle Tiere",
+        "subtitle": "Magazin AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "08:06",
+        "title": "Hallo okidoki",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "08:10",
+        "title": "Schmatzo",
+        "subtitle": "AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "08:26",
+        "title": "Hallo okidoki",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "08:31",
+        "title": "Knall genial",
+        "subtitle": "AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "08:47",
+        "title": "Hallo okidoki",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "08:52",
+        "title": "Tom Turbo",
+        "subtitle": "Das Ei vom Mars - Detektivserie AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "09:17",
+        "title": "Die Superklasse",
+        "subtitle": "Wien - AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "09:42",
+        "title": "Fünf Freunde und das Tal der Dinosaurier",
+        "subtitle": "Abenteuerfilm DEU 2017",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "11:15",
+        "title": "Michel Roux - Auf den Spuren verborgener Restaurants",
+        "subtitle": "Neue Folge: Der Nordosten - Kochsendung GBR 2016",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "12:02",
+        "title": "Sport-Bild",
+        "subtitle": "Magazin",
+        "markers": []
+      },
+      {
+        "startTime": "12:36",
+        "title": "Kindergarten Cop",
+        "subtitle": "Action-Komödie USA 1990",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "14:21",
+        "title": "Aushilfsgangster",
+        "subtitle": "Komödie USA 2011",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "15:57",
+        "title": "ZIB Flash",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "16:06",
+        "title": "Free Guy",
+        "subtitle": "Komödie USA 2021",
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "17:51",
+        "title": "ZIB Flash",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "18:00",
+        "title": "Sport am Sonntag",
+        "subtitle": "Magazin",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "19:15",
+        "title": "Fußball Bundesliga",
+        "subtitle": "9.Runde - Übertragung",
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "19:50",
+        "title": "Wetter",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "19:55",
+        "title": "ZIB Flash",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "19:50",
+        "title": "Wetter",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "19:55",
+        "title": "ZIB Flash",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "20:01",
+        "title": "ZIB Magazin Kino",
+        "subtitle": "Infomagazin AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "20:15",
+        "title": "Manta Manta - Zwoter Teil",
+        "subtitle": "ORF-Premiere: Spielfilm DEU 2025",
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "22:19",
+        "title": "Manta Manta",
+        "subtitle": "Spielfilm DEU 1991",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "23:49",
+        "title": "Formel 1 Großer Preis von Singapur 2025",
+        "subtitle": "Das ganze Rennen und Analyse - Übertragung",
+        "markers": []
+      },
+      {
+        "startTime": "02:10",
+        "title": "Manta Manta - Zwoter Teil",
+        "subtitle": "ORF-Premiere: Spielfilm DEU 2025",
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "04:07",
+        "title": "9-1-1 Notruf L.A.",
+        "subtitle": "Verpasste Zeit - Drama USA 2022",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "04:57",
+        "title": "Eishockey ICE Hockey League 2025/2026: Steinbach Black Wings Linz - Red Bull Salzburg",
+        "subtitle": "Highlights - Übertragung",
+        "markers": []
+      }
+    ]
+  },
+  {
+    "channel": "ORF 2",
+    "programs": [
+      {
+        "startTime": "06:08",
+        "title": "Text Aktuell",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "07:00",
+        "title": "Wetter-Panorama",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "09:00",
+        "title": "ZIB",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "09:07",
+        "title": "Ein Habsburger auf Mallorca - Ludwig Salvator und der Zauber des Meeres",
+        "subtitle": "Dokumentation AUT 2017",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "10:00",
+        "title": "Julie Andrews - Unvergessene Mary Poppins",
+        "subtitle": "matinee zum 90. Geburtstag v. Julie Andrews am 01.10.2025 - Dokumentation FRA 2020",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "10:51",
+        "title": "Die Kulturwoche",
+        "subtitle": "Kulturmagazin AUT 2025",
+        "markers": []
+      },
+      {
+        "startTime": "11:00",
+        "title": "ZIB",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "11:05",
+        "title": "Pressestunde",
+        "subtitle": "mit Gabriel Felbermayr, Direktor Wirtschaftsforschungsinstitut, WIFO - Interview",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "11:58",
+        "title": "Hohes Haus",
+        "subtitle": "Parlamentsmagazin",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "12:29",
+        "title": "kreuz und quer NAH DRAN",
+        "subtitle": "Nach dem Amok - Ein Notfallseelsorger im Porträt - Magazin AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "13:00",
+        "title": "ZIB",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "13:18",
+        "title": "Wetter",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "13:21",
+        "title": "Seitenblicke Weekend",
+        "subtitle": "Society-Magazin AUT",
+        "markers": []
+      },
+      {
+        "startTime": "13:35",
+        "title": "Dober dan Štajerska",
+        "subtitle": "Lokal zu sehen in der Steiermark",
+        "markers": []
+      },
+      {
+        "startTime": "13:35",
+        "title": "Dobar dan Hrvati",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "13:35",
+        "title": "Dober dan, Koroška",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "13:38",
+        "title": "Daheim - das Volksgruppenmagazin",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "14:08",
+        "title": "Kochroulette",
+        "subtitle": "Kochsendung AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "14:34",
+        "title": "Rosamunde Pilcher: Zeit der Erkenntnis",
+        "subtitle": "Film DEU 2000",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "16:01",
+        "title": "Traditionsreiches Österreich",
+        "subtitle": "Bleiberger Knappenschar, Mollner Maultrommel & Aberseer Schleuniger - AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "16:27",
+        "title": "Erlebnis Österreich",
+        "subtitle": "Orgeln, Ortsbild, Orchideen. Die vielen Passionen eines Apothekers. - Dokumentation",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "16:54",
+        "title": "Was ich glaube",
+        "subtitle": "Was im Leben zählt - Martha Nussbaum - Interview AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "17:00",
+        "title": "ZIB",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "17:08",
+        "title": "Aktuell nach fünf",
+        "subtitle": "Regional-Nachrichten",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "17:30",
+        "title": "Natur im Garten",
+        "subtitle": "Reportage AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "17:56",
+        "title": "Zurück zur Natur",
+        "subtitle": "Eisenberg - Reportage AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "18:25",
+        "title": "Österreich-Bild aus dem Landesstudio Kärnten",
+        "subtitle": "Pink Lake - Vielfalt am Wörthersee - Dokumentation",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "18:57",
+        "title": "Bundesland heute Service",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "19:00",
+        "title": "Bundesland heute",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "19:14",
+        "title": "Lotto 6 aus 45 mit Joker",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "19:30",
+        "title": "Zeit im Bild",
+        "subtitle": null,
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "19:51",
+        "title": "Wetter",
+        "subtitle": null,
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "19:55",
+        "title": "Sport Aktuell",
+        "subtitle": null,
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "20:03",
+        "title": "Seitenblicke",
+        "subtitle": "Society-Magazin",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "20:15",
+        "title": "Tatort",
+        "subtitle": "ORF-Premiere: Dunkelheit - Krimi 2025",
+        "markers": ["UT", "AD"]
+      },
+      {
+        "startTime": "21:51",
+        "title": "ZIB 2",
+        "subtitle": null,
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "22:16",
+        "title": "DAS GESPRÄCH mit Susanne Schnabl",
+        "subtitle": "Protestieren, boykottieren, sabotieren - Wie viel ist uns der Klima-Konflikt? - Diskussionssendung",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "23:10",
+        "title": "John Lennons geheime Liebe: May Pang",
+        "subtitle": "dok/Film zum 85. Geb. v. John Lennon am 09.10.2025 - Dokumentation USA 2022",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "00:42",
+        "title": "Ein Habsburger auf Mallorca - Ludwig Salvator und der Zauber des Meeres",
+        "subtitle": "Dokumentation AUT 2017",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "01:34",
+        "title": "Julie Andrews - Unvergessene Mary Poppins",
+        "subtitle": "FRA 2020",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "02:26",
+        "title": "Die Kulturwoche",
+        "subtitle": "Kulturmagazin AUT 2025",
+        "markers": []
+      },
+      {
+        "startTime": "02:34",
+        "title": "Columbo - Geld, Macht und Muskeln",
+        "subtitle": "Krimi USA 1974",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "04:06",
+        "title": "Seitenblicke",
+        "subtitle": "Society-Magazin",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "04:11",
+        "title": "Dober dan, Koroška",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "04:40",
+        "title": "Dobar dan Hrvati",
+        "subtitle": null,
+        "markers": []
+      },
+      {
+        "startTime": "05:10",
+        "title": "kreuz und quer NAH DRAN",
+        "subtitle": "Nach dem Amok - Ein Notfallseelsorger im Porträt - Magazin AUT",
+        "markers": ["UT"]
+      },
+      {
+        "startTime": "05:40",
+        "title": "Erlebnis Österreich",
+        "subtitle": "Orgeln, Ortsbild, Orchideen. Die vielen Passionen eines Apothekers. - Dokumentation",
+        "markers": ["UT"]
+      }
+    ]
+  }
+]

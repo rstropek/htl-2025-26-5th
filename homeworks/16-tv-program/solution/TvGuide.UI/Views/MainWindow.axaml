@@ -1,0 +1,197 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TvGuide.UI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="700"
+        x:Class="TvGuide.UI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TV Guide"
+        Width="1200" Height="700">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Window.Styles>
+        <Style Selector="Border.channelHeader">
+            <Setter Property="Background" Value="#E0E0E0"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style Selector="TextBlock.channelHeaderText">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Border.programItem">
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style Selector="TextBlock.startTime">
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style Selector="TextBlock.programTitle">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style Selector="TextBlock.subtitle">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="Gray"/>
+        </Style>
+
+        <Style Selector="TextBlock.markers">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style Selector="TextBlock.sectionHeader">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style Selector="Button.recordButton">
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left side: Program listings for ORF 1 and ORF 2 -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Channel Headers -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Classes="channelHeader">
+                    <TextBlock Text="ORF 1" Classes="channelHeaderText"/>
+                </Border>
+
+                <Border Grid.Column="1" Classes="channelHeader">
+                    <TextBlock Text="ORF 2" Classes="channelHeaderText"/>
+                </Border>
+            </Grid>
+
+            <!-- Programs -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- ORF 1 Programs -->
+                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1,0,1,1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Orf1Programs}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Classes="programItem">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding StartTime}" Classes="startTime"/>
+                                            <TextBlock Text="{Binding Title}" Classes="programTitle"/>
+                                            <TextBlock Text="{Binding Subtitle}" Classes="subtitle" IsVisible="{Binding Subtitle, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                                            <TextBlock Text="{Binding MarkersDisplay}" Classes="markers" IsVisible="{Binding MarkersDisplay, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                                            <Button Content="Record" Classes="recordButton" Command="{Binding $parent[Window].DataContext.RecordCommand}" CommandParameter="{Binding}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- ORF 2 Programs -->
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Orf2Programs}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Classes="programItem">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding StartTime}" Classes="startTime"/>
+                                            <TextBlock Text="{Binding Title}" Classes="programTitle"/>
+                                            <TextBlock Text="{Binding Subtitle}" Classes="subtitle"/>
+                                            <TextBlock Text="{Binding MarkersDisplay}" Classes="markers"/>
+                                            <Button Content="Record" Classes="recordButton" Command="{Binding $parent[Window].DataContext.RecordCommand}" CommandParameter="{Binding}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- Right side: Search and Recording Jobs -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Search Section -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Search text:" Margin="0,0,0,5"/>
+                <TextBox Text="{Binding SearchText}" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Filter" Command="{Binding FilterCommand}" Margin="0,0,10,0"/>
+                    <Button Content="Clear Filter" Command="{Binding ClearFilterCommand}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Recording Jobs Section -->
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Your Recording Jobs:" Classes="sectionHeader"/>
+                <DataGrid ItemsSource="{Binding RecordingJobs}" 
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          GridLinesVisibility="All"
+                          BorderThickness="1"
+                          BorderBrush="Black">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Station" Binding="{Binding Station}" Width="Auto"/>
+                        <DataGridTextColumn Header="Start" Binding="{Binding StartTime}" Width="Auto"/>
+                        <DataGridTextColumn Header="End" Binding="{Binding EndTime}" Width="Auto"/>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTemplateColumn Header="" Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Delete" 
+                                            Command="{Binding $parent[Window].DataContext.DeleteRecordingJobCommand}" 
+                                            CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</Window>
