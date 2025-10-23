@@ -1,13 +1,12 @@
 using AppServices;
 using Microsoft.EntityFrameworkCore;
+using TestInfrastructure;
 
 namespace AppServicesTests;
 
 public class DatabaseTestsWithClassFixture(DatabaseFixture fixture)
     : IClassFixture<DatabaseFixture>
 {
-    private readonly DatabaseFixture fixture = fixture;
-
     [Fact]
     public async Task CanAddAndRetrieveDummy()
     {

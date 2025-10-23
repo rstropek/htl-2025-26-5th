@@ -1,115 +1,84 @@
 ﻿using AppServices;
+using Importer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-// Parse command line arguments
-if (args.Length == 0)
+// Build the host with dependency injection
+var builder = Host.CreateApplicationBuilder(new HostApplicationBuilderSettings
 {
-    Console.Error.WriteLine("Error: Please provide a CSV file path as a command line argument.");
-    Console.Error.WriteLine("Usage: Importer <csv-file-path> [--dry-run]");
-    return 1;
-}
+    Args = args,
+    ContentRootPath = AppContext.BaseDirectory
+});
 
-var csvFilePath = args[0];
-var isDryRun = args.Length > 1 && args[1] == "--dry-run";
+// Configure services
+ConfigureServices(builder.Services, builder.Configuration);
 
-// Validate file exists
-if (!File.Exists(csvFilePath))
-{
-    Console.Error.WriteLine($"Error: File '{csvFilePath}' not found.");
-    return 1;
-}
-
-var contextFactory = new ApplicationDataContextFactory();
-using var context = contextFactory.CreateDbContext([]);
-
-// Start a transaction
-using var transaction = await context.Database.BeginTransactionAsync();
+var host = builder.Build();
 
 try
 {
-    // Clear existing data
-    await context.Dummies.ExecuteDeleteAsync();
+    // Parse command line arguments
+    var parser = new CommandLineParser();
+    var parsedArgs = parser.Parse(args);
 
-    // Read and parse CSV file
-    var lines = await File.ReadAllLinesAsync(csvFilePath);
-    
-    if (lines.Length == 0)
+    // Validate file exists
+    if (!File.Exists(parsedArgs.CsvFilePath))
     {
-        Console.Error.WriteLine("Error: CSV file is empty.");
-        await transaction.RollbackAsync();
+        Console.Error.WriteLine($"Error: File '{parsedArgs.CsvFilePath}' not found.");
         return 1;
     }
 
-    // Parse header
-    var header = lines[0].Split(';');
-    if (header.Length < 2 || header[0] != "Name" || header[1] != "DecimalProperty")
-    {
-        Console.Error.WriteLine("Error: Invalid CSV header. Expected: Name;DecimalProperty");
-        await transaction.RollbackAsync();
-        return 1;
-    }
+    // Get the importer service from DI container
+    var importer = host.Services.GetRequiredService<IDummyImporter>();
 
-    // Parse and import data rows
-    var importedCount = 0;
-    for (int i = 1; i < lines.Length; i++)
-    {
-        var line = lines[i].Trim();
-        if (string.IsNullOrWhiteSpace(line))
-        {
-            continue; // Skip empty lines
-        }
-
-        var values = line.Split(';');
-        if (values.Length < 2)
-        {
-            Console.Error.WriteLine($"Warning: Line {i + 1} has insufficient columns. Skipping.");
-            continue;
-        }
-
-        var name = values[0].Trim();
-        var decimalValueStr = values[1].Trim();
-
-        if (!decimal.TryParse(decimalValueStr, out var decimalValue))
-        {
-            Console.Error.WriteLine($"Error: Invalid decimal value '{decimalValueStr}' on line {i + 1}.");
-            await transaction.RollbackAsync();
-            return 1;
-        }
-
-        var dummy = new Dummy
-        {
-            Name = name,
-            DecimalProperty = decimalValue
-        };
-
-        context.Dummies.Add(dummy);
-        importedCount++;
-        Console.WriteLine($"Imported: {name} - {decimalValue}");
-    }
-
-    // Save changes
-    await context.SaveChangesAsync();
+    // Perform the import
+    var importedCount = await importer.ImportFromCsvAsync(parsedArgs.CsvFilePath, parsedArgs.IsDryRun);
 
     Console.WriteLine($"\nSuccessfully imported {importedCount} record(s).");
 
-    // Rollback if dry-run or if explicitly requested
-    if (isDryRun)
+    if (parsedArgs.IsDryRun)
     {
-        Console.WriteLine("Dry-run mode: Rolling back transaction.");
-        await transaction.RollbackAsync();
+        Console.WriteLine("Dry-run mode: Transaction was rolled back.");
     }
     else
     {
-        await transaction.CommitAsync();
         Console.WriteLine("Transaction committed.");
     }
 
     return 0;
 }
+catch (ArgumentException ex)
+{
+    Console.Error.WriteLine($"Error: {ex.Message}");
+    return 1;
+}
+catch (FileNotFoundException ex)
+{
+    Console.Error.WriteLine($"Error: {ex.Message}");
+    return 1;
+}
 catch (Exception ex)
 {
     Console.Error.WriteLine($"\nError occurred: {ex.Message}");
-    Console.Error.WriteLine("Rolling back transaction.");
-    await transaction.RollbackAsync();
+    Console.Error.WriteLine("Import failed.");
     return 1;
+}
+
+static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+{
+    // Register database context
+    var path = configuration["Database:path"] ?? throw new InvalidOperationException("Database path not configured.");
+    var fileName = configuration["Database:fileName"] ?? throw new InvalidOperationException("Database file name not configured.");
+    var connectionString = $"Data Source={path}/{fileName}";
+
+    services.AddDbContext<ApplicationDataContext>(options =>
+        options.UseSqlite(connectionString));
+
+    // Register application services
+    services.AddScoped<IFileReader, FileReader>();
+    services.AddScoped<IDummyCsvParser, DummyCsvParser>();
+    services.AddScoped<IDummyImportDatabaseWriter, DummyImportDatabaseWriter>();
+    services.AddScoped<IDummyImporter, DummyImporter>();
 }

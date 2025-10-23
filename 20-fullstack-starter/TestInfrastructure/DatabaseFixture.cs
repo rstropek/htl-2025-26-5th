@@ -2,7 +2,7 @@ using AppServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 
-namespace AppServicesTests;
+namespace TestInfrastructure;
 
 public class DatabaseFixture : IDisposable
 {

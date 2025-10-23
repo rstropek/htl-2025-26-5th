@@ -2,7 +2,7 @@
 
 using AppServices;
 
-public class UnitTest1
+public class DummyLogicTests
 {
     [Fact]
     public void Dummy_IncrementDecimal_Increments()
