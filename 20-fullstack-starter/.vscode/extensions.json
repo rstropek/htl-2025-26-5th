@@ -5,6 +5,7 @@
         "ms-dotnettools.csdevkit",
         "humao.rest-client",
         "qwtel.sqlite-viewer",
-        "mechatroner.rainbow-csv"
+        "mechatroner.rainbow-csv",
+        "johnpapa.angular-essentials"
     ]
 }

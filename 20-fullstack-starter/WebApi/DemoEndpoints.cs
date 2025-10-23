@@ -16,7 +16,9 @@ public static class DemoEndpoints
         {
             logic.IncrementDecimal(dummyToChange, 1.5m);
             return Results.Ok(dummyToChange);
-        }).WithDescription("Increments the DecimalProperty of the provided Dummy object by 1.5 using the DummyLogic service.");
+        })
+        .Produces<Dummy>(StatusCodes.Status200OK)
+        .WithDescription("Increments the DecimalProperty of the provided Dummy object by 1.5 using the DummyLogic service.");
 
         return app;
     }

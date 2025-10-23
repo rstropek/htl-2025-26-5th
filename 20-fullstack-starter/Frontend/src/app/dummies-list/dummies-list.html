@@ -1,0 +1,19 @@
+<h2>Dummies List</h2>
+
+@if (dummies()) {
+<ul>
+  @for (dummy of dummies(); track dummy.id) {
+  <li>{{ dummy.name }} ({{ dummy.decimalProperty }})</li>
+  }
+</ul>
+} @else {
+<p>Loading...</p>
+}
+
+<h2>Changed Dummy</h2>
+
+@if (dummy()) {
+<p>{{ dummy()?.id }}: {{ dummy()?.name }} ({{ dummy()?.decimalProperty }})</p>
+} @else {
+<p>No dummy selected.</p>
+}

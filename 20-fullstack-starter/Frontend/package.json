@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node build/set-env.js && ng serve --port $PORT",
+    "start": "node build/set-env.js && npm run generate-web-api && ng serve --port $PORT",
     "start:windows": "node build/set-env.js && ng serve --port %PORT%",
     "build": "ng build",
-    "test": "ng test"
+    "test": "ng test",
+    "generate-web-api": "npx ng-openapi-gen --input WebApi.json --output src/app/api"
   },
   "prettier": {
     "printWidth": 100,
@@ -42,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-openapi-gen": "^1.0.4",
     "typescript": "~5.9.2"
   }
 }
