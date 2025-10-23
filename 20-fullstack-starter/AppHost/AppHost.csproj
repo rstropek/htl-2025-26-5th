@@ -16,8 +16,6 @@
     <PackageReference Include="CommunityToolkit.Aspire.Hosting.Sqlite" Version="9.8.0" />
   </ItemGroup>
 
-  
-
   <ItemGroup>
     <ProjectReference Include="../WebApi/WebApi.csproj" />
   </ItemGroup>
