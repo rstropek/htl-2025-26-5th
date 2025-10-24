@@ -7,3 +7,5 @@ export type { DummiesGet$Params } from './fn/web-api/dummies-get';
 export { dummiesGet } from './fn/web-api/dummies-get';
 export type { DummyLogicPost$Params } from './fn/web-api/dummy-logic-post';
 export { dummyLogicPost } from './fn/web-api/dummy-logic-post';
+export type { GeneratePost$Params } from './fn/demo-endpoints/generate-post';
+export { generatePost } from './fn/demo-endpoints/generate-post';

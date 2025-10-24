@@ -1,0 +1,35 @@
+<h2>Generate Records</h2>
+
+<div class="form-container">
+  <label for="numberOfRecords">Number of Records (1-1000):</label>
+  <input 
+    type="number" 
+    id="numberOfRecords" 
+    [(ngModel)]="numberOfRecords"
+    min="1" 
+    max="1000"
+    [disabled]="loading()"
+  />
+  <button (click)="generate()" [disabled]="loading()">Generate</button>
+</div>
+
+@if (loading()) {
+  <p class="loading">Generating records...</p>
+}
+
+@if (error()) {
+  <div class="error">
+    <strong>Error:</strong> {{ error() }}
+  </div>
+}
+
+@if (results()) {
+  <div class="results">
+    <h3>Results ({{ results()?.length }} records)</h3>
+    <ul>
+      @for (record of results(); track record.id) {
+        <li>{{ record.id }}: {{ record.name }}</li>
+      }
+    </ul>
+  </div>
+}

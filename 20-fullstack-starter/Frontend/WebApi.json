@@ -77,10 +77,74 @@
           }
         }
       }
+    },
+    "/generate": {
+      "post": {
+        "tags": [
+          "DemoEndpoints"
+        ],
+        "description": "Generates a list of DemoOutputDto objects based on the specified number of records.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoInputDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DemoOutputDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "DemoInputDto": {
+        "required": [
+          "numberOfRecords"
+        ],
+        "type": "object",
+        "properties": {
+          "numberOfRecords": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "DemoOutputDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
       "Dummy": {
         "type": "object",
         "properties": {
@@ -102,6 +166,9 @@
   "tags": [
     {
       "name": "WebApi"
+    },
+    {
+      "name": "DemoEndpoints"
     }
   ]
 }

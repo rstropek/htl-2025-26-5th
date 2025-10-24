@@ -26,6 +26,28 @@ public static class DemoEndpoints
         .Produces<Dummy>(StatusCodes.Status200OK)
         .WithDescription("Increments the DecimalProperty of the provided Dummy object by 1.5 using the DummyLogic service.");
 
+        app.MapPost("/generate", GenerateRecords)
+        .Produces<List<DemoOutputDto>>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status400BadRequest)
+        .WithDescription("Generates a list of DemoOutputDto objects based on the specified number of records.");
+
         return app;
     }
+
+    public static IResult GenerateRecords(DemoInputDto input)
+    {
+        if (input.NumberOfRecords < 1 || input.NumberOfRecords > 1000)
+        {
+            return Results.BadRequest("NumberOfRecords must be between 1 and 1000.");
+        }
+
+        var output = Enumerable.Range(1, input.NumberOfRecords)
+            .Select(i => new DemoOutputDto(i, $"Name {i}"))
+            .ToList();
+        return Results.Ok(output);
+    }
 }
+
+public record DemoInputDto(int NumberOfRecords);
+
+public record DemoOutputDto(int Id, string Name);
