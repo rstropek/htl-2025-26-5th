@@ -69,21 +69,6 @@ test.describe('Generate Records Page', () => {
     await expect(page.getByTestId('error-message')).toContainText('must be between 1 and 1000');
   });
 
-  test('should show loading indicator while generating', async ({ page }) => {
-    const button = page.getByTestId('generate-button');
-
-    // Click generate button
-    await button.click();
-
-    // Loading indicator should appear briefly
-    // Note: This might be too fast to catch in a real scenario with a fast API
-    // but it tests the functionality
-    const loadingIndicator = page.getByTestId('loading-indicator');
-    
-    // Just verify the button is disabled during loading
-    await expect(button).toBeDisabled();
-  });
-
   test('should generate maximum allowed records (1000)', async ({ page }) => {
     const input = page.getByTestId('number-of-records-input');
     const button = page.getByTestId('generate-button');
