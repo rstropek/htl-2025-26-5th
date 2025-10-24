@@ -12,14 +12,65 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <!-- Some code to demonstrate how to access the DB -->
-    <StackPanel>
-        <Button Command="{Binding AddSampleDataCommand}">Add Sample Data</Button>
-        <Button Command="{Binding GetFirstSampleRowCommand}">Load Data</Button>
-    </StackPanel>
+    <Border Padding="20">
+        <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, * , *, *">
+            <ScrollViewer Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="2">
+                <ItemsControl ItemsSource="{Binding CashedProducts}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button
+                                Command="{Binding $parent.((vm:MainWindowViewModel)DataContext).ProductButtonClickCommand}"
+                                CommandParameter="{Binding}"
+                                Width="250"
+                                Height="150"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center">
+                                <TextBlock Text="{Binding ProductName}" />
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                    BorderBrush="Coral"
+                    BorderThickness="1"
+                    Padding="10">
+                <StackPanel>
+                    <Border BorderBrush="Coral" BorderThickness="0 1 0 1">
+                        <Grid RowDefinitions="*" ColumnDefinitions="*,50,100">
+                            <TextBlock Grid.Column="0" Text="Produkt" />
+                            <TextBlock Grid.Column="1" Text="Anzahl" />
+                            <TextBlock Grid.Column="2" Text="Ges.-Preis" />
+                        </Grid>
+                    </Border>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding CashedReceiptLines}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Coral" BorderThickness="0 0 0 1">
+                                        <Grid RowDefinitions="*" ColumnDefinitions="*,50,100">
+                                            <TextBlock Grid.Column="0" Text="{Binding Product.ProductName}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Amount}" />
+                                            <TextBlock Grid.Column="2"
+                                                       Text="{Binding TotalPrice, StringFormat=\{0:0.00\}}" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
 
     <!--
     Tips for UI:
