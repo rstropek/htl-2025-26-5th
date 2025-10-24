@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node build/set-env.js && npm run generate-web-api && ng serve --port $PORT",
-    "start:windows": "node build/set-env.js && ng serve --port %PORT%",
+    "start:windows": "node build/set-env.js && npm run generate-web-api && ng serve --port %PORT%",
     "build": "ng build",
     "test": "ng test",
     "generate-web-api": "npx ng-openapi-gen --input WebApi.json --output src/app/api"

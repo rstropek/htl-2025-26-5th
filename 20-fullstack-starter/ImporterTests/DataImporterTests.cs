@@ -157,7 +157,7 @@ public class DataImporterTests
         // Arrange
         var csvFilePath = "test.csv";
         var csvContent = "Name;DecimalProperty\nTest1;10.5";
-        var dummies = new List<Dummy> { new Dummy { Name = "Test1", DecimalProperty = 10.5m } };
+        var dummies = new List<Dummy> { new() { Name = "Test1", DecimalProperty = 10.5m } };
 
         fileReader.ReadAllTextAsync(csvFilePath).Returns(Task.FromResult(csvContent));
         csvParser.ParseCsv(csvContent).Returns(dummies);
