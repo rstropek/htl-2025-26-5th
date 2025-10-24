@@ -1,4 +1,4 @@
-namespace AppServices;
+namespace AppServices.Importer;
 
 /// <summary>
 /// Interface for importing data from CSV files

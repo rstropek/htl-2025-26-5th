@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace AppServices;
+namespace AppServices.Importer;
 
 /// <summary>
 /// Interface for writing objects to the database

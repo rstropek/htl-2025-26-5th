@@ -1,4 +1,4 @@
-namespace AppServices;
+namespace AppServices.Importer;
 
 /// <summary>
 /// Interface for parsing CSV content into objects
