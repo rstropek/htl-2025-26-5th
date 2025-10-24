@@ -46,6 +46,10 @@ npm install
 npm run build
 ```
 
+> **Note for Windows Users**: The `package.json` files in `Frontend` contains `start` scripts configured for Linux/macOS (using `$PORT`). Windows users must rename the script:
+> - Rename `start` to `start:linux` (or delete it)
+> - Rename `start:windows` to `start`
+
 ## API Integration
 
 The Frontend and WebApi are integrated through OpenAPI specifications:
@@ -93,6 +97,10 @@ dotnet test
 ### Frontend E2E Tests
 
 The Frontend E2E tests use Playwright and are orchestrated by Aspire alongside the other services.
+
+> **Note for Windows Users**: The `package.json` files in `FrontendTests` contains `start` scripts configured for Linux/macOS (using `$PORT`). Windows users must rename the script:
+> - Rename `start` to `start:linux` (or delete it)
+> - Rename `start:windows` to `start`
 
 Simply start the Aspire AppHost:
 
