@@ -28,6 +28,8 @@ This is a full-stack application built with .NET 9 and Angular, orchestrated usi
 
 - **ImporterTests** - Unit tests for the Importer project, including command-line parsing and data import functionality.
 
+- **FrontendTests** - End-to-end tests for the Frontend application using Playwright. Tests the application from the user's perspective in a real browser environment.
+
 ## Building the Solution
 
 ### Build .NET Projects
@@ -77,3 +79,30 @@ This will launch the Aspire dashboard where you can monitor and access all runni
 - Telemetry and logging
 
 The Aspire dashboard will provide URLs to access each service.
+
+## Running Tests
+
+### .NET Tests
+
+Run all .NET tests:
+
+```bash
+dotnet test
+```
+
+### Frontend E2E Tests
+
+The Frontend E2E tests use Playwright and are orchestrated by Aspire alongside the other services.
+
+Simply start the Aspire AppHost:
+
+```bash
+dotnet run --project AppHost
+```
+
+Aspire will automatically:
+- Launch all services (WebApi, Frontend, FrontendTests)
+- Set the necessary environment variables so Playwright can find the Angular app
+- Start the Playwright UI for running the E2E tests
+
+You can monitor and access all services, including the Playwright test UI, through the Aspire dashboard.
