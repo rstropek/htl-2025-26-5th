@@ -9,26 +9,27 @@
     min="1" 
     max="1000"
     [disabled]="loading()"
+    data-testid="number-of-records-input"
   />
-  <button (click)="generate()" [disabled]="loading()">Generate</button>
+  <button (click)="generate()" [disabled]="loading()" data-testid="generate-button">Generate</button>
 </div>
 
 @if (loading()) {
-  <p class="loading">Generating records...</p>
+  <p class="loading" data-testid="loading-indicator">Generating records...</p>
 }
 
 @if (error()) {
-  <div class="error">
+  <div class="error" data-testid="error-message">
     <strong>Error:</strong> {{ error() }}
   </div>
 }
 
 @if (results()) {
-  <div class="results">
+  <div class="results" data-testid="results-container">
     <h3>Results ({{ results()?.length }} records)</h3>
-    <ul>
+    <ul data-testid="results-list">
       @for (record of results(); track record.id) {
-        <li>{{ record.id }}: {{ record.name }}</li>
+        <li data-testid="result-item">{{ record.id }}: {{ record.name }}</li>
       }
     </ul>
   </div>

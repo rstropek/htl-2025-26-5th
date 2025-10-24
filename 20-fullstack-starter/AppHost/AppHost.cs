@@ -9,8 +9,13 @@ var sqlite = builder.AddSqlite(
 var webapi = builder.AddProject<Projects.WebApi>("webapi")
     .WithReference(sqlite);
 
-builder.AddNpmApp("frontend", "../Frontend")
+var frontend = builder.AddNpmApp("frontend", "../Frontend")
     .WithReference(webapi)
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints();
+
+builder.AddNpmApp("playwright", "../FrontendTests")
+    .WithReference(frontend)
     .WithHttpEndpoint(env: "PORT")
     .WithExternalHttpEndpoints();
 

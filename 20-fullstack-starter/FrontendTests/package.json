@@ -1,0 +1,19 @@
+{
+  "name": "frontendtests",
+  "version": "1.0.0",
+  "description": "Playwright tests for the Frontend application",
+  "main": "index.js",
+  "scripts": {
+    "start": "playwright test --ui --ui-port=$PORT",
+    "start:windows": "playwright test --ui --ui-port=%PORT%"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.1",
+    "typescript": "^5.9.3"
+  }
+}
