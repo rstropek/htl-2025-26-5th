@@ -1,0 +1,163 @@
+<!--
+  Template-Driven Form Validation Explanation:
+  
+  This form uses Angular's template-driven forms with the following validation approach:
+  
+  1. Form Setup:
+     - Each input has a 'name' attribute (required for ngModel to work)
+     - Two-way data binding with [(ngModel)] binds directly to component signals
+     - Template reference #timeEntryForm="ngForm" exposes the NgForm directive
+  
+  2. Field-Level Validation:
+     - 'required' attribute adds HTML5 and Angular validation
+     - Template references like #dateField="ngModel" expose the NgModel directive for each field
+     - NgModel provides validation state properties:
+       * invalid: true when validation fails (e.g., required field is empty)
+       * touched: true after user focuses then blurs the field
+       * dirty: true after user modifies the field value
+  
+  3. Visual Feedback:
+     - [class.invalid]="fieldRef.invalid && fieldRef.touched" conditionally applies CSS class
+     - This ensures validation errors only show AFTER user interaction (touched)
+     - Prevents showing errors on page load before user has chance to fill the form
+  
+  4. Error Messages:
+     - @if blocks display specific error messages when field is invalid AND touched
+     - Error messages are user-friendly and guide the user to fix issues
+  
+  5. Form-Level Validation:
+     - Submit button uses timeEntryForm.invalid to disable when any field is invalid
+     - This prevents submission of incomplete/invalid data
+     - Combined with saving() signal to prevent double-submission
+  
+  This approach provides immediate feedback after user interaction while avoiding
+  premature error displays, creating a smooth user experience.
+-->
+<div class="edit-container">
+  <h1>Edit Time Entry</h1>
+
+  @if (loading()) {
+  <p class="loading">Loading...</p>
+  } @else if (error()) {
+  <p class="error">{{ error() }}</p>
+  } @else {
+  <form #timeEntryForm="ngForm" (ngSubmit)="onSubmit()" class="edit-form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          [(ngModel)]="date"
+          required
+          #dateField="ngModel"
+          [class.invalid]="dateField.invalid && dateField.touched"
+        />
+        @if (dateField.invalid && dateField.touched) {
+        <span class="error-message">Date is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="startTime">Start Time:</label>
+        <input
+          type="time"
+          id="startTime"
+          name="startTime"
+          [(ngModel)]="startTime"
+          required
+          #startTimeField="ngModel"
+          [class.invalid]="startTimeField.invalid && startTimeField.touched"
+        />
+        @if (startTimeField.invalid && startTimeField.touched) {
+        <span class="error-message">Start time is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="endTime">End Time:</label>
+        <input
+          type="time"
+          id="endTime"
+          name="endTime"
+          [(ngModel)]="endTime"
+          required
+          #endTimeField="ngModel"
+          [class.invalid]="endTimeField.invalid && endTimeField.touched"
+        />
+        @if (endTimeField.invalid && endTimeField.touched) {
+        <span class="error-message">End time is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="employee">Employee:</label>
+        <select
+          id="employee"
+          name="employeeId"
+          [(ngModel)]="employeeId"
+          required
+          #employeeField="ngModel"
+          [class.invalid]="employeeField.invalid && employeeField.touched"
+        >
+          <option [ngValue]="null">Select an employee</option>
+          @for (employee of employees(); track employee?.id) {
+          <option [ngValue]="employee?.id">{{ employee?.employeeName }}</option>
+          }
+        </select>
+        @if (employeeField.invalid && employeeField.touched) {
+        <span class="error-message">Employee is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="project">Project:</label>
+        <select
+          id="project"
+          name="projectId"
+          [(ngModel)]="projectId"
+          required
+          #projectField="ngModel"
+          [class.invalid]="projectField.invalid && projectField.touched"
+        >
+          <option [ngValue]="null">Select a project</option>
+          @for (project of projects(); track project?.id) {
+          <option [ngValue]="project?.id">{{ project?.projectCode }}</option>
+          }
+        </select>
+        @if (projectField.invalid && projectField.touched) {
+        <span class="error-message">Project is required</span>
+        }
+      </div>
+
+      <div class="form-group full-width">
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+          rows="4"
+          required
+          #descriptionField="ngModel"
+          [class.invalid]="descriptionField.invalid && descriptionField.touched"
+        ></textarea>
+        @if (descriptionField.invalid && descriptionField.touched) {
+        <span class="error-message">Description is required</span>
+        }
+      </div>
+    </div>
+
+    @if (error()) {
+    <p class="form-error">{{ error() }}</p>
+    }
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="timeEntryForm.invalid || saving()">
+        {{ saving() ? 'Saving...' : 'Save' }}
+      </button>
+      <button type="button" class="cancel" (click)="cancel()" [disabled]="saving()">Cancel</button>
+    </div>
+  </form>
+  }
+</div>

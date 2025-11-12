@@ -1,0 +1,62 @@
+<div class="timesheet-container">
+  <h1>Time Entries</h1>
+  
+  <div class="filters">
+    <div class="filter-group">
+      <label for="employee-filter">Employee:</label>
+      <select id="employee-filter" (change)="onEmployeeChange($event)">
+        <option value="">All Employees</option>
+        @for (employee of employees(); track employee?.id) {
+          <option [value]="employee?.id">{{ employee?.employeeName }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="project-filter">Project:</label>
+      <select id="project-filter" (change)="onProjectChange($event)">
+        <option value="">All Projects</option>
+        @for (project of projects(); track project?.id) {
+          <option [value]="project?.id">{{ project?.projectCode }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="description-filter">Description:</label>
+      <input 
+        type="text" 
+        id="description-filter" 
+        placeholder="Filter by description..."
+        (input)="onDescriptionChange($event)"
+      />
+    </div>
+  </div>
+
+  <div class="timesheet-grid">
+    <div class="grid-header">Date</div>
+    <div class="grid-header">Employee</div>
+    <div class="grid-header">Project</div>
+    <div class="grid-header">Start Time</div>
+    <div class="grid-header">End Time</div>
+    <div class="grid-header">Description</div>
+    <div class="grid-header">Actions</div>
+
+    @for (entry of filteredTimeEntries(); track entry.id) {
+      <div class="grid-cell">{{ entry.date }}</div>
+      <div class="grid-cell">{{ entry.employeeName }}</div>
+      <div class="grid-cell">{{ entry.projectCode }}</div>
+      <div class="grid-cell">{{ entry.startTime }}</div>
+      <div class="grid-cell">{{ entry.endTime }}</div>
+      <div class="grid-cell">{{ entry.description }}</div>
+      <div class="grid-cell actions">
+        <button type="button" (click)="editTimeEntry(entry.id)">Edit</button>
+        <button type="button" class="delete" (click)="deleteTimeEntry(entry.id)">Delete</button>
+      </div>
+    }
+  </div>
+
+  @if (filteredTimeEntries().length === 0) {
+    <p class="no-data">No time entries found.</p>
+  }
+</div>

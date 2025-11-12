@@ -1,0 +1,13 @@
+EMP-ID: 0815
+EMP-NAME: Max Mustermann
+TIMESHEETS: 2025-10-01
+08:00;08:30;"Team Coordination Call";ADMIN
+08:30;10:45;"Invoice Processing System";ACCOUNTING
+10:45;12:15;"Customer Portal Updates";CRM
+13:15;15:00;"Financial Report Review";ACCOUNTING
+15:00;17:30;"Client Dashboard Redesign";CRM
+TIMESHEETS: 2025-10-02
+08:00;08:20;"Sprint Planning Session";ADMIN
+08:20;11:30;"Payment Gateway Integration";ACCOUNTING
+11:30;12:00;"Documentation Updates";ADMIN
+13:00;16:45;"Contact Management Features";CRM

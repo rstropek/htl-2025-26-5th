@@ -1,0 +1,12 @@
+EMP-ID: 4711
+EMP-NAME: Rainer Stropek
+DEPARTMENT: Research and Development
+TIMESHEETS: 2025-10-01
+08:00;08:15;"Daily Standup Meeting";ADMIN
+08:15;09:00;"Importer Implementation";ACCOUNTING
+09:00;12:00;"Debugging CSS Bug";CRM
+13:00;17:00;"Importer Implementation";ACCOUNTING
+TIMESHEET: 2025-10-02
+08:00;08:15;"Daily Standup Meeting";ADMIN
+08:15;12:00;"Open Tofu IaC Scripts";CRM
+12:45;16:30;"Importer Implementation";ACCOUNTING

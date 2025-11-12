@@ -1,0 +1,4 @@
+EMP-ID: 4711
+EMP-NAME: Rainer Stropek
+TIMESHEETS: 2025-10-01
+08:00;ABC;"Daily Standup Meeting";ADMIN
