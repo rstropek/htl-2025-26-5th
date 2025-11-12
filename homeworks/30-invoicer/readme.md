@@ -12,7 +12,7 @@ Your task is to implement a time sheet management application with the following
 
 ## Time Tracking Import File Format
 
-You can find the detailed, technical specification of the time tracking import file format in the [file-format-specification.md](file-format-specification.md) document. The folder _data_ contains sample import files for testing purposes (valid and invalid ones). Make yourself familiar with the format before you start implementing the importer tool.
+You can find the detailed, technical specification of the time tracking import file format in the [file-format-specification.md](file-format-specification.md) document. The folder [_data_](./data/) contains sample import files for testing purposes (valid and invalid ones). Make yourself familiar with the format before you start implementing the importer tool.
 
 ## Functional Requirements
 
