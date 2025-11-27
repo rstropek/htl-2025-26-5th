@@ -98,10 +98,6 @@ dotnet test
 
 The Frontend E2E tests use Playwright and are orchestrated by Aspire alongside the other services.
 
-> **Note for Windows Users**: The `package.json` files in `FrontendTests` contains `start` scripts configured for Linux/macOS (using `$PORT`). Windows users must rename the script:
-> - Rename `start` to `start:linux` (or delete it)
-> - Rename `start:windows` to `start`
-
 Simply start the Aspire AppHost:
 
 ```bash
