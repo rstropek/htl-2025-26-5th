@@ -1,0 +1,38 @@
+/* TODO: If unfamiliar, research about CSS variables */
+
+:root {
+  /* Primary/Interactive Elements */
+  --color-interactive: #1976d2;
+  --color-interactive-hover: #1565c0;
+  --color-interactive-disabled: #90caf9;
+  
+  /* Error/Danger States */
+  --color-danger: #d32f2f;
+  --color-danger-hover: #c62828;
+  --color-danger-background: #ffebee;
+  
+  /* Success States */
+  --color-active: #2e7d32;
+  
+  /* Text and Neutral Elements */
+  --color-foreground: #333;
+  --color-secondary: #757575;
+  --color-secondary-hover: #616161;
+  --color-secondary-disabled: #bdbdbd;
+  --color-divider: #e0e0e0;
+  
+  /* Background Colors */
+  --color-surface: white;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

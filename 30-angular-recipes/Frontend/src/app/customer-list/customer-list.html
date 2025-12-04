@@ -1,0 +1,73 @@
+<div class="customer-list-container">
+  <h1>Customer List</h1>
+
+  <!-- TODO: If unfamiliar, research about Angular conditional rendering -->
+
+  @if (loading()) {
+    <div class="loading">
+      <p>Loading customers...</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error">
+      <p>{{ error() }}</p>
+    </div>
+  }
+
+  @if (!loading() && !error()) {
+    @if (customers().length === 0) {
+      <div class="empty">
+        <p>No customers available.</p>
+      </div>
+    } @else {
+      <div class="actions-bar">
+        <button 
+          (click)="deleteSelectedCustomers()" 
+          class="delete-selected-btn"
+          [disabled]="!hasSelection()">
+          Delete selected ({{ selectedCount() }})
+        </button>
+      </div>
+
+      <div class="customer-grid">
+        <div class="grid-header">Select</div>
+        <div class="grid-header">Name</div>
+        <div class="grid-header">Date of Birth</div>
+        <div class="grid-header right-align">Revenue</div>
+        <div class="grid-header right-align">Customer Value</div>
+        <div class="grid-header">Status</div>
+        <div class="grid-header">Actions</div>
+
+        <!-- TODO: If unfamiliar, research about Angular loops -->
+        <!-- TODO: If unfamiliar, research about track function in @for (important for performance) -->
+        @for (customer of customers(); track customer.id) {
+          <div class="grid-cell checkbox-cell">
+            <input 
+              type="checkbox" 
+              [checked]="isCustomerSelected(customer.id!)"
+              (change)="toggleCustomerSelection(customer.id!)"
+              class="customer-checkbox">
+          </div>
+          <div class="grid-cell">{{ customer.name }}</div>
+          <!-- TODO: If unfamiliar, research about Angular pipes, particularly date, decimal, and currency -->
+          <div class="grid-cell">{{ customer.dateOfBirth | date:'dd.MM.yyyy' }}</div>
+          <div class="grid-cell right-align">{{ customer.revenue | currency:'EUR' }}</div>
+          <div class="grid-cell right-align">{{ customer.customerValue }}</div>
+          <div class="grid-cell">
+            <!-- TODO: If unfamiliar, research about Angular conditional classes -->
+            <span [class.active]="customer.isActive" [class.inactive]="!customer.isActive">
+              {{ customer.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </div>
+          <div class="grid-cell">
+            <!-- TODO: If unfamiliar, research about Angular router links -->
+            <a [routerLink]="['/customers', customer.id, 'edit']" class="edit-link">Edit</a>
+            <!-- TODO: If unfamiliar, research about Angular event binding -->
+            <button (click)="deleteCustomer(customer.id)" class="delete-btn">Delete</button>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

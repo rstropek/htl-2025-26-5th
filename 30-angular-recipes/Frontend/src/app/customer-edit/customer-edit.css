@@ -1,0 +1,150 @@
+.customer-edit-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: var(--color-foreground);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error {
+  color: var(--color-danger);
+  background-color: var(--color-danger-background);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+form {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-field {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox-field label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+label {
+  font-weight: 500;
+  color: var(--color-foreground);
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  padding: 0.75rem;
+  border: 2px solid var(--color-divider);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--color-interactive);
+}
+
+input.invalid {
+  border-color: var(--color-danger);
+}
+
+.error-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.error-message {
+  color: var(--color-danger);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.save-btn {
+  background-color: var(--color-interactive);
+  color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: var(--color-interactive-hover);
+}
+
+.save-btn:disabled {
+  background-color: var(--color-interactive-disabled);
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background-color: var(--color-secondary-hover);
+}
+
+.cancel-btn:disabled {
+  background-color: var(--color-secondary-disabled);
+  cursor: not-allowed;
+}
+

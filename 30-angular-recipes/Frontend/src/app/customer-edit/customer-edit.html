@@ -1,0 +1,111 @@
+<div class="customer-edit-container">
+  <h1>Edit Customer</h1>
+
+  @if (loading()) {
+    <div class="loading">
+      <p>Loading customer data...</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error">
+      <p>{{ error() }}</p>
+    </div>
+  }
+
+  @if (!loading() && !error()) {
+    <form (submit)="onSubmit($event)">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            [field]="customerForm.name"
+            [class.invalid]="customerForm.name().touched() && customerForm.name().invalid()"
+          />
+          @if (customerForm.name().touched() && customerForm.name().invalid()) {
+            <div class="error-messages">
+              @for (error of customerForm.name().errors(); track error) {
+                <span class="error-message">{{ error.message }}</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input
+            type="date"
+            id="dateOfBirth"
+            [field]="customerForm.dateOfBirth"
+            [class.invalid]="customerForm.dateOfBirth().touched() && customerForm.dateOfBirth().invalid()"
+          />
+          @if (customerForm.dateOfBirth().touched() && customerForm.dateOfBirth().invalid()) {
+            <div class="error-messages">
+              @for (error of customerForm.dateOfBirth().errors(); track error) {
+                <span class="error-message">{{ error.message }}</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="revenue">Revenue (€):</label>
+          <input
+            type="number"
+            id="revenue"
+            step="0.01"
+            [field]="customerForm.revenue"
+            [class.invalid]="customerForm.revenue().touched() && customerForm.revenue().invalid()"
+          />
+          @if (customerForm.revenue().touched() && customerForm.revenue().invalid()) {
+            <div class="error-messages">
+              @for (error of customerForm.revenue().errors(); track error) {
+                <span class="error-message">{{ error.message }}</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="customerValue">Customer Value (0-10):</label>
+          <input
+            type="number"
+            id="customerValue"
+            step="1"
+            [field]="customerForm.customerValue"
+            [class.invalid]="customerForm.customerValue().touched() && customerForm.customerValue().invalid()"
+          />
+          @if (customerForm.customerValue().touched() && customerForm.customerValue().invalid()) {
+            <div class="error-messages">
+              @for (error of customerForm.customerValue().errors(); track error) {
+                <span class="error-message">{{ error.message }}</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-field checkbox-field">
+          <label>
+            <input
+              type="checkbox"
+              [field]="customerForm.isActive"
+            />
+            Active
+          </label>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="save-btn" [disabled]="!customerForm().valid() || saving()">
+          {{ saving() ? 'Saving...' : 'Save' }}
+        </button>
+        <button type="button" class="cancel-btn" (click)="cancel()" [disabled]="saving()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  }
+</div>
+

@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "redhat.vscode-xml",
+        "esbenp.prettier-vscode",
+        "ms-dotnettools.csdevkit",
+        "humao.rest-client",
+        "qwtel.sqlite-viewer",
+        "mechatroner.rainbow-csv",
+        "johnpapa.angular-essentials",
+        "gruntfuggly.todo-tree",
+        "wayou.vscode-todo-highlight"
+    ]
+}
