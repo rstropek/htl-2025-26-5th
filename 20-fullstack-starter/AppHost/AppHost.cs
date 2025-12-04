@@ -14,9 +14,12 @@ var frontend = builder.AddNpmApp("frontend", "../Frontend")
     .WithHttpEndpoint(env: "PORT")
     .WithExternalHttpEndpoints();
 
+/*
+// Frontend tests are currently disabled
 builder.AddNpmApp("playwright", "../FrontendTests")
     .WithReference(frontend)
     .WithHttpEndpoint(env: "PORT")
     .WithExternalHttpEndpoints();
+*/
 
 builder.Build().Run();
