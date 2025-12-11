@@ -1,0 +1,16 @@
+<h1>OIDC Authentication Demo</h1>
+
+<nav>
+  @if (!isAuthenticated().isAuthenticated) {
+    <button (click)="login()">Login</button>
+  } @else {
+    <p>Logged in as: <strong>{{ userData().userData?.name }}</strong></p>
+    <button (click)="logout()">Logout</button>
+    <button (click)="checkAuthWithSilentRenew()">Check Auth with Silent Renew</button>
+    <a routerLink="/protected">Go to Protected Route</a>
+  }
+</nav>
+
+<hr>
+
+<router-outlet />
