@@ -1,0 +1,7 @@
+ProductCode: STRING(10), MANDATORY
+ProductName: STRING(100), MANDATORY
+ProductDescription: STRING(255), OPTIONAL
+Category: STRING(50), OPTIONAL
+PricePerUnit: DECIMAL, MANDATORY
+---
+"BKE0002","Road Bike Swift 200","Lightweight aluminum road bike designed for endurance training and long-distance touring.","Road Bikes","1199.50"

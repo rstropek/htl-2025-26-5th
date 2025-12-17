@@ -1,0 +1,17 @@
+ProductCode: STRING(10), MANDATORY
+ProductName: STRING(100), MANDATORY
+ProductDescription: STRING(255), OPTIONAL
+Category: STRING(50), OPTIONAL
+PricePerUnit: DECIMAL, MANDATORY
+---
+"BKE0001","Mountain Bike Alpha","Entry-level hardtail mountain bike ideal for light trails and weekend rides.","Mountain Bikes",699.99
+"BKE0002","Road Bike Swift 200","Lightweight aluminum road bike designed for endurance training and long-distance touring.","Road Bikes",1199.50
+"BKE0003","City Bike UrbanEase 7","Comfortable city bike with 7-speed gear hub and integrated rear carrier.","City Bikes",549.00
+"BKE0004","E-Bike TrailBoost 500","Electric mountain bike with mid-drive motor and long-range battery for steep terrain.","E-Bikes",2899.00
+"BKE0005","Kids Bike FunRider 16","Durable 16-inch kids bike with training wheels and colorful frame design.","Kids Bikes",199.95
+"BKE0006","Gravel Bike AllRoad X","Versatile gravel bike built for mixed surfaces with wide tires and endurance geometry.","Gravel Bikes",1599.00
+"BKE0007","Folding Bike CompactOne","Fully foldable commuter bike that fits easily into trains, cars, and small apartments.","Folding Bikes",799.00
+"BKE0008","BMX Bike Freestyle Pro","Sturdy BMX bike optimized for park, street, and dirt jumps.","BMX Bikes",349.99
+"BKE0009","Cargo Bike LoadMaster","Heavy-duty cargo bike designed for transporting groceries, kids, or delivery goods.","Cargo Bikes",1890.00
+"BKE0010","E-Bike CityFlow 300","Urban e-bike with pedal assist, integrated lights, and low-step frame for easy mounting.","E-Bikes",2190.00
+"BKE0011","Replacement Screws",,,1299.00

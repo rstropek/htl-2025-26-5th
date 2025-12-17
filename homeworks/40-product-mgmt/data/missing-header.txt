@@ -1,0 +1,2 @@
+"BKE0001","Mountain Bike Alpha","Entry-level hardtail mountain bike ideal for light trails and weekend rides.","Mountain Bikes",699.99
+"BKE0002","Road Bike Swift 200","Lightweight aluminum road bike designed for endurance training and long-distance touring.","Road Bikes",1199.50

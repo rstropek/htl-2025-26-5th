@@ -1,0 +1,56 @@
+<div class="products-container">
+  <h1>Products</h1>
+  
+  <div class="filters">
+    <div class="filter-group">
+      <label for="category-filter">Category:</label>
+      <select id="category-filter" [(ngModel)]="selectedCategory">
+        <option value="">All Categories</option>
+        @for (category of categories(); track category) {
+          <option [value]="category">{{ category }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="price-filter">Max Unit Price:</label>
+      <input 
+        type="number" 
+        id="price-filter" 
+        placeholder="Enter max price..."
+        step="0.01"
+        min="0"
+        [(ngModel)]="maxUnitPrice"
+      />
+    </div>
+
+    <div class="filter-group">
+      <button type="button" class="search-button" (click)="onSearch()">Search</button>
+    </div>
+  </div>
+
+  <div class="products-grid">
+    <div class="grid-header">Code</div>
+    <div class="grid-header">Name</div>
+    <div class="grid-header">Description</div>
+    <div class="grid-header">Category</div>
+    <div class="grid-header">Price/Unit</div>
+    <div class="grid-header">Actions</div>
+
+    @for (product of products(); track product.id) {
+      <div class="grid-cell">{{ product.productCode }}</div>
+      <div class="grid-cell">{{ product.productName }}</div>
+      <div class="grid-cell">{{ product.productDescription || '-' }}</div>
+      <div class="grid-cell">{{ product.category || '-' }}</div>
+      <div class="grid-cell">${{ product.pricePerUnit.toFixed(2) }}</div>
+      <div class="grid-cell actions">
+        <button type="button" (click)="editProduct(product.id)">Edit</button>
+        <button type="button" class="delete" (click)="deleteProduct(product.id)">Delete</button>
+      </div>
+    }
+  </div>
+
+  @if (products().length === 0) {
+    <p class="no-data">No products found.</p>
+  }
+</div>
