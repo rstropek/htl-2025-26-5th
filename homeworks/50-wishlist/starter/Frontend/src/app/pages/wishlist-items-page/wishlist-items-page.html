@@ -1,0 +1,37 @@
+<section class="card items">
+  <h1>Wishlist items</h1>
+
+  <!-- Conditionally show loading/error messages -->
+  <div class="message error">An error has occurred</div>
+  <div class="message">Loading…</div>
+
+  <!-- Conditionally show the grid once loaded; only if there are items -->
+  <div class="grid">
+    <div class="head">Item</div>
+    <div class="head">Category</div>
+    <div class="head">Bought</div>
+    <div class="head">Actions</div>
+
+    <!-- Add a row for each item -->
+    <div class="cell">
+      <!-- Add "bought" class if the item is bought -->
+      <span>Name of item</span>
+    </div>
+    <div class="cell">Category of item</div>
+    <div class="cell"><!-- "Yes" if bought, otherwise "No" --></div>
+    <div class="cell actions">
+      <!-- 
+        Conditionally display "Mark bought" or "Unmark" 
+        Disable the button while saving operations (marking as bought, deleting) are in progress
+      -->
+      <button type="button" class="btn">
+        Mark bought <!-- or "Unmark" -->
+      </button>
+      <!-- Disable while saving operations are in progress -->
+      <button type="button" class="btn danger">Delete</button>
+    </div>
+  </div>
+
+  <!-- Conditionally show message if there are no items -->
+  <div class="message">No items yet. Add one using “Add item”.</div>
+</section>

@@ -1,0 +1,47 @@
+<section class="card login">
+  <h1>Login</h1>
+  <p class="hint">Enter your wishlist name and your PIN (child or parent).</p>
+
+  @if (error()) {
+  <div class="message error">{{ error() }}</div>
+  }
+
+  <form>
+    <div class="form-grid">
+      <div class="field">
+        <label for="wishlistName">Wishlist name</label>
+        <input
+          id="wishlistName"
+          type="text"
+          [field]="loginForm.wishlistName"
+          [class.invalid]="loginForm.wishlistName().touched() && loginForm.wishlistName().invalid()"
+        />
+        @if (loginForm.wishlistName().touched() && loginForm.wishlistName().invalid()) {
+        <div class="error">
+          @for (e of loginForm.wishlistName().errors(); track e) {
+          <div>{{ e.message }}</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="field">
+        <label for="pin">PIN</label>
+        <input id="pin" type="text" [field]="loginForm.pin" [class.invalid]="loginForm.pin().touched() && loginForm.pin().invalid()" />
+        @if (loginForm.pin().touched() && loginForm.pin().invalid()) {
+        <div class="error">
+          @for (e of loginForm.pin().errors(); track e) {
+          <div>{{ e.message }}</div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn primary" type="button" [disabled]="submitting() || !loginForm().valid()" (click)="onSubmit()">
+        {{ submitting() ? 'Signing in...' : 'Sign in' }}
+      </button>
+    </div>
+  </form>
+</section>

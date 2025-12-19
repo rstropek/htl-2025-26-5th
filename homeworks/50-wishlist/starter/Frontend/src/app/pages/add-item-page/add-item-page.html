@@ -1,0 +1,44 @@
+<section class="card add">
+  <h1>Add Your Wish for Christmas 🎄</h1>
+  <p class="hint">Tell Santa what you want for Christmas.</p>
+
+  <form>
+    <div class="form-grid">
+      <div class="field">
+        <label for="itemName">Item</label>
+        <!-- Add "invalid" class if the field is touched and invalid -->
+        <input id="itemName" type="text" />
+        <!-- Conditionally show validation errors -->
+        <div class="error">
+          <!-- Add validation error messages here -->
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="category">Category</label>
+        <!-- Add "invalid" class if the field is touched and invalid -->
+        <select id="category">
+          <option value="">Select</option>
+          <!-- Loop through categories and create an option for each -->
+        </select>
+        <!-- Conditionally show validation errors -->
+        <div class="error">
+          <!-- Add validation error messages here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <!-- 
+        Disable the button if the form is invalid or currently saving."
+      -->
+      <button class="btn primary" type="button">
+        Add item
+      </button>
+    </div>
+  </form>
+
+  <!-- Show error or success messages -->
+  <div class="message error">An error occurred.</div>
+  <div class="message success">Santa has received your wish!</div>
+</section>

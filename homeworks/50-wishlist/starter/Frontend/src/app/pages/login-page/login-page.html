@@ -1,0 +1,43 @@
+<section class="card login">
+  <h1>Login</h1>
+  <p class="hint">Enter your wishlist name and your PIN (child or parent).</p>
+
+  <!-- Conditionally show error message -->
+  <div class="message error">An error has occurred.</div>
+
+  <form>
+    <div class="form-grid">
+      <div class="field">
+        <label for="wishlistName">Wishlist name</label>
+        <!-- Add "invalid" class if the field is touched and invalid -->
+        <input
+          id="wishlistName"
+          type="text"
+        />
+        <!-- Conditionally show validation errors -->
+        <div class="error">
+          <!-- Add validation error messages here -->
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="pin">PIN</label>
+        <!-- Add "invalid" class if the field is touched and invalid -->
+        <input id="pin" type="text" />
+        <!-- Conditionally show validation errors -->
+        <div class="error">
+          <!-- Add validation error messages here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <!--
+        Disable the button if the form is invalid or currently saving.
+      -->
+      <button class="btn primary" type="button">
+        Sign in
+      </button>
+    </div>
+  </form>
+</section>

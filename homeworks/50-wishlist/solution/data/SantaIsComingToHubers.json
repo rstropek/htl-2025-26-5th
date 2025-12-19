@@ -1,0 +1,29 @@
+{
+  "wishlist": {
+    "name": "SantaIsComingToHubers",
+    "parentPin": "N7KX8R",
+    "childPin": "D9QZ4M"
+  },
+  "items": [
+    {
+      "category": "Art & Craft",
+      "itemName": "Kids Acrylic Painting Starter Set",
+      "bought": false
+    },
+    {
+      "category": "Toys",
+      "itemName": "Wooden Marble Run Deluxe",
+      "bought": true
+    },
+    {
+      "category": "Books",
+      "itemName": "Science Experiments for Curious Kids",
+      "bought": false
+    },
+    {
+      "category": "Electronics",
+      "itemName": "Programmable Robot for Beginners",
+      "bought": false
+    }
+  ]
+}

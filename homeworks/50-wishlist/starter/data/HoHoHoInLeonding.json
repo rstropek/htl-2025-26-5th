@@ -1,0 +1,29 @@
+{
+  "wishlist": {
+    "name": "HoHoHoInLeonding",
+    "parentPin": "C8R7VY",
+    "childPin": "M4Z9QK"
+  },
+  "items": [
+    {
+      "category": "Toys",
+      "itemName": "Remote-Controlled Excavator (Rechargeable)",
+      "bought": false
+    },
+    {
+      "category": "Books",
+      "itemName": "Puzzle & Brain Teasers Book (Ages 8-12)",
+      "bought": false
+    },
+    {
+      "category": "Electronics",
+      "itemName": "Bluetooth Kids Headphones (Volume Limited)",
+      "bought": true
+    },
+    {
+      "category": "Books",
+      "itemName": "My First Coding Book (Scratch-style)",
+      "bought": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.app-header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(105, 16, 8, 0.55), rgba(105, 16, 8, 0));
+}
+
+.brand__title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #efce7f;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 26px rgba(255, 255, 255, 0.50);
+}
+
+.brand__subtitle {
+  color: #fbedea;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 26px rgba(255, 255, 255, 0.50);
+  font-size: 0.95rem;
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav__link {
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ffdbbd;
+  border: 1px solid transparent;
+}
+
+.nav__link:hover {
+  background: rgba(255, 219, 189, 0.14);
+  border-color: rgba(255, 219, 189, 0.55);
+}
+
+.nav__link.active {
+  background: rgba(239, 206, 127, 0.18);
+  border-color: rgba(239, 206, 127, 0.50);
+  color: #efce7f;
+}
+
+.session {
+  text-align: right;
+}
+
+.session__label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.session__value {
+  font-weight: 700;
+}
+
+.app-main {
+  padding: 1.75rem 1.5rem;
+}

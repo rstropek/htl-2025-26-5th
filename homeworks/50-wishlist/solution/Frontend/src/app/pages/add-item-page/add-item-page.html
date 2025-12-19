@@ -1,0 +1,49 @@
+<section class="card add">
+  <h1>Add Your Wish for Christmas 🎄</h1>
+  <p class="hint">Tell Santa what you want for Christmas.</p>
+
+  <form>
+    <div class="form-grid">
+      <div class="field">
+        <label for="itemName">Item</label>
+        <input id="itemName" type="text" [field]="addForm.itemName" [class.invalid]="addForm.itemName().touched() && addForm.itemName().invalid()" />
+        @if (addForm.itemName().touched() && addForm.itemName().invalid()) {
+        <div class="error">
+          @for (e of addForm.itemName().errors(); track e) {
+          <div>{{ e.message }}</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="field">
+        <label for="category">Category</label>
+        <select id="category" [field]="addForm.category" [class.invalid]="addForm.category().touched() && addForm.category().invalid()">
+          <option value="">Select</option>
+          @for (c of categories(); track c) {
+          <option [value]="c">{{ c }}</option>
+          }
+        </select>
+        @if (addForm.category().touched() && addForm.category().invalid()) {
+        <div class="error">
+          @for (e of addForm.category().errors(); track e) {
+          <div>{{ e.message }}</div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn primary" type="button" [disabled]="saving() || !addForm().valid()" (click)="onSubmit()">
+        {{ saving() ? 'Adding…' : 'Add item' }}
+      </button>
+    </div>
+  </form>
+
+  @if (error()) {
+  <div class="message error">{{ error() }}</div>
+  } @if (success()) {
+  <div class="message success">{{ success() }}</div>
+  }
+</section>

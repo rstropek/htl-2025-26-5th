@@ -1,0 +1,24 @@
+{
+  "wishlist": {
+    "name": "XMasAtStropeks",
+    "parentPin": "9JX7KM",
+    "childPin": "TR4GQZ"
+  },
+  "items": [
+    {
+      "category": "Toys",
+      "itemName": "LEGO Space Rover Set",
+      "bought": false
+    },
+    {
+      "category": "Books",
+      "itemName": "Illustrated Atlas for Kids",
+      "bought": true
+    },
+    {
+      "category": "Electronics",
+      "itemName": "Digital Microscope Kit",
+      "bought": false
+    }
+  ]
+}

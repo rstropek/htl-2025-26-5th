@@ -1,0 +1,24 @@
+<div class="app-shell">
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand__title">Christmas Wishlist</div>
+      <div class="brand__subtitle">Santa's Workshop</div>
+    </div>
+
+    <nav class="nav">
+      @if (isAuthenticated()) {
+        <a routerLink="/add-item" class="nav__link">Add item</a>
+        @if (isParent()) {
+          <a routerLink="/parent" class="nav__link">Manage wishlist</a>
+        }
+        <a class="btn" class="nav__link" (click)="logout()">Logout</a>
+      } @else {
+        <a routerLink="/login" class="nav__link">Login</a>
+      }
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <router-outlet />
+  </main>
+</div>

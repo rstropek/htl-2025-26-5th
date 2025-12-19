@@ -1,0 +1,33 @@
+<section class="card items">
+  <h1>Wishlist items</h1>
+
+  @if (error()) {
+  <div class="message error">{{ error() }}</div>
+  } @if (loading()) {
+  <div class="message">Loading…</div>
+  } @else {
+  <div class="grid">
+    <div class="head">Item</div>
+    <div class="head">Category</div>
+    <div class="head">Bought</div>
+    <div class="head">Actions</div>
+
+    @for (item of items(); track item.id) {
+    <div class="cell">
+      <span [class.bought]="item.bought">{{ item.itemName }}</span>
+    </div>
+    <div class="cell">{{ item.category }}</div>
+    <div class="cell">{{ item.bought ? 'Yes' : 'No' }}</div>
+    <div class="cell actions">
+      <button type="button" class="btn" (click)="toggleBought(item)" [disabled]="busyItemId() === item.id">
+        {{ item.bought ? 'Unmark' : 'Mark bought' }}
+      </button>
+      <button type="button" class="btn danger" (click)="delete(item)" [disabled]="busyItemId() === item.id">Delete</button>
+    </div>
+    }
+  </div>
+
+  @if (items().length === 0) {
+  <div class="message">No items yet. Add one using “Add item”.</div>
+  } }
+</section>

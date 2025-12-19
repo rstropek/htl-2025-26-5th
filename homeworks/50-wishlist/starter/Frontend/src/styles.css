@@ -1,0 +1,168 @@
+:root {
+  --bg: radial-gradient(circle at 50% 30%, #c74223 0%, #691008 75%);
+  --surface: rgba(255, 219, 189, 0.18);
+  --surface-2: rgba(255, 219, 189, 0.12);
+  --border: rgba(255, 219, 189, 0.65);
+  --text: #397d34;
+  --muted: rgba(255, 219, 189, 0.78);
+
+  --brand-green: #09542d;
+  --brand-red: #a21212;
+  --brand-gold: #b18a2c;
+
+  --ok: #0f766e;
+  --danger: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #a01e1e;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.65), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.card {
+  background: #b3753c;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.message.error {
+  border-color: rgba(185, 28, 28, 0.35);
+  background: rgba(185, 28, 28, 0.08);
+  color: #7f1d1d;
+}
+
+.message.success {
+  border-color: rgba(57, 125, 52, 0.75);
+  background: rgba(57, 125, 52, 0.55);
+  color: #ffdbbd;
+  text-shadow: 0 0 10px rgba(105, 16, 8, 0.25);
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font: inherit;
+}
+
+.btn.primary {
+  background: rgba(145, 26, 20, 0.16);
+  border-color: rgba(145, 26, 20, 0.45);
+  color: #911a14;
+}
+
+.btn.primary:hover {
+  background: rgba(145, 26, 20, 0.22);
+}
+
+.btn.danger {
+  background: rgba(145, 26, 20, 0.16);
+  border-color: rgba(145, 26, 20, 0.5);
+  color: #911a14;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Forms */
+.form-grid {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  .error {
+    color: #911a14;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  label {
+    font-weight: 800;
+    color: #ffdbbd;
+    text-shadow: 0 0 10px rgba(105, 16, 8, 0.35);
+  }
+
+  input,
+  select {
+    border: 1px solid rgba(255, 219, 189, 0.7);
+    border-radius: 12px;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1b1f23;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: rgba(239, 206, 127, 0.85);
+    box-shadow: 0 0 0 4px rgba(239, 206, 127, 0.25), 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+
+  input.invalid,
+  select.invalid {
+    border-color: rgba(145, 26, 20, 0.7);
+    box-shadow: 0 0 0 4px rgba(145, 26, 20, 0.16), 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+
+  input::placeholder {
+    color: rgba(27, 31, 35, 0.45);
+  }
+}
+
+.form-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
