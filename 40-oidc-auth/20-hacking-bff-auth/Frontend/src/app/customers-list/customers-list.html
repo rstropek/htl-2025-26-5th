@@ -1,0 +1,53 @@
+<h2>Customer Management</h2>
+
+<div class="form-container">
+  <label for="customerName">Customer Name:</label>
+  <input
+    type="text"
+    id="customerName"
+    [(ngModel)]="newCustomerName"
+    placeholder="Enter customer name"
+    [disabled]="loading()"
+  />
+  <button (click)="addCustomer()" [disabled]="loading() || !newCustomerName()">Add Customer</button>
+</div>
+
+@if (loading()) {
+  <p class="loading">Loading...</p>
+}
+
+@if (error()) {
+  <div class="error">
+    <strong>Error:</strong> {{ error() }}
+  </div>
+}
+
+@if (customers()) {
+  <div class="results">
+    <h3>Customers ({{ customers()?.length }})</h3>
+    @if (customers()?.length === 0) {
+      <p>No customers found.</p>
+    } @else {
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (customer of customers(); track customer.id) {
+            <tr>
+              <td>{{ customer.id }}</td>
+              <td [innerHTML]="getUnsafeHtml(customer.name)"></td>
+              <td>
+                <button (click)="deleteCustomer(customer.id)" [disabled]="loading()">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+}

@@ -1,0 +1,21 @@
+{
+  "name": "startercode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "Starter Code",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vite": "^7.1.4"
+  },
+  "dependencies": {
+  }
+}

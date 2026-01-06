@@ -1,0 +1,27 @@
+<div class="app-container">
+  <header>
+    <h1>BFF Auth Demo</h1>
+
+    @if (isAuthenticated() === null) {
+      <p>Checking authentication...</p>
+    } @else if (isAuthenticated()) {
+      <nav>
+        <a routerLink="/customers">Customers</a>
+        <a routerLink="/secrets">Secrets</a>
+      </nav>
+      <button (click)="logout()">Logout</button>
+    } @else {
+      <button (click)="login()">Login</button>
+    }
+  </header>
+
+  <main>
+    @if (isAuthenticated() === null) {
+      <p>Loading...</p>
+    } @else if (isAuthenticated()) {
+      <router-outlet />
+    } @else {
+      <p>Please login to access the application.</p>
+    }
+  </main>
+</div>
