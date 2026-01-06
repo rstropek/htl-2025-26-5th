@@ -45,3 +45,9 @@ The purpose of this sample is to demonstrate lots of security flaws. It generall
 * Document your hack and demonstrate it to the class
     * Describe the underlying problem
     * Propose enhancements to make the app more secure
+
+## Further reading
+
+* [Implementing BFF Pattern in ASP.NET Core for SPAs](https://nestenius.se/net/implementing-bff-pattern-in-asp-net-core-for-spas/)
+* [Implement a secure web app using Angular and an ASP.NET Core Server](https://damienbod.com/2023/09/11/implement-a-secure-web-application-using-nx-standalone-angular-and-an-asp-net-core-server/)
+* [Backend For Frontend (BFF) Security Framework](https://docs.duendesoftware.com/bff/)
