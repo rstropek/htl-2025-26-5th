@@ -39,6 +39,7 @@ The purpose of this sample is to demonstrate lots of security flaws. It generall
     * Use CSRF and XSS to steal the login cookie
     * Use the stolen cookie to retrieve all user claims
     * Add a link to vanilla web with which you can update secrets without the user noticing
+    * Login after logout without needing to know the previous user's credentials (e.g. if user works on a public computer in a library)
 * Use as much AI as you want
     * However, you must be able to explain and demonstrate your hack to the class **without** using AI
 * Document your hack and demonstrate it to the class
