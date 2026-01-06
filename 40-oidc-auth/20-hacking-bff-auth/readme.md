@@ -2,7 +2,7 @@
 
 **⚠️ THIS SAMPLE CONTAINS HORRIBLE CODE ⚠️ DO NOT WRITE CODE LIKE THIS ⚠️**
 
-The purpose of this sample is to demonstrate lots of security flaws. It generally works, but it's not secure. It is used as a basis for a hacking exercise.
+The purpose of this sample is to demonstrate lots of security flaws. It generally works, but it's not secure. It is used as a basis for a hacking exercise. Check _Further Reading_ at the end of this readme for more information on how to properly implement BFF with OIDC and SPAs.
 
 ## What this app does
 
@@ -46,7 +46,7 @@ The purpose of this sample is to demonstrate lots of security flaws. It generall
     * Describe the underlying problem
     * Propose enhancements to make the app more secure
 
-## Further reading
+## Further Reading
 
 * [Implementing BFF Pattern in ASP.NET Core for SPAs](https://nestenius.se/net/implementing-bff-pattern-in-asp-net-core-for-spas/)
 * [Implement a secure web app using Angular and an ASP.NET Core Server](https://damienbod.com/2023/09/11/implement-a-secure-web-application-using-nx-standalone-angular-and-an-asp-net-core-server/)
