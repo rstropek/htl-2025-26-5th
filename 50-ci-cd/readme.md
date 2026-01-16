@@ -40,7 +40,7 @@ Here are some important details for accessing the Azure resources:
   * `5ahif-group3@rainertimecockpit.onmicrosoft.com`
   * `5ahif-group4@rainertimecockpit.onmicrosoft.com`
   * The initial password will be provided by your teacher during class. You will be required to change the password upon first login.
-  * Use the Entra ID users to sign in to the [Azure Portal](https://portal.azure.com).
+  * Use the Entra ID users to sign in to https://portal.azure.com/rainertimecockpit.onmicrosoft.com.
 * Each group has its own resource group:
   * `htl-5ahif-group-1`
   * `htl-5ahif-group-2`
