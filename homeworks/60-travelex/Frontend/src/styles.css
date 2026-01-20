@@ -1,0 +1,121 @@
+/* Global styles */
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+	color: #1f2937;
+	background: #f6f7f9;
+}
+
+h1 {
+	font-size: 24px;
+	margin: 0;
+}
+
+h2 {
+	font-size: 18px;
+	margin: 0 0 10px;
+}
+
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	padding: 8px 12px;
+	background: #2563eb;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.button:hover:not(:disabled) {
+	background: #1d4ed8;
+}
+
+.button:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+}
+
+.button.secondary {
+	background: white;
+	color: #1f2937;
+	border-color: #cfd6df;
+}
+
+.button.secondary:hover:not(:disabled) {
+	background: #f3f5f7;
+}
+
+.button.small {
+	padding: 6px 10px;
+	border-radius: 7px;
+	font-size: 13px;
+}
+
+.card {
+	background: white;
+	border: 1px solid #e6e8ec;
+	border-radius: 8px;
+}
+
+.mono {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.hint {
+	color: #5a6472;
+}
+
+.alert {
+	border-radius: 8px;
+	padding: 12px 14px;
+	margin: 12px 0;
+}
+
+.alert.error {
+	background: #fff5f5;
+	border: 1px solid #fed7d7;
+	color: #822727;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table th,
+.table td {
+	padding: 10px 12px;
+	border-bottom: 1px solid #f0f2f5;
+	vertical-align: top;
+}
+
+.table thead th {
+	background: #fafbfc;
+	font-weight: 600;
+	color: #2d3748;
+}
+
+.right {
+	text-align: right;
+}

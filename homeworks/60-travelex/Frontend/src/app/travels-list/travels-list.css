@@ -1,0 +1,38 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: #5a6472;
+  margin: 4px 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.card {
+  overflow: hidden;
+}
+
+.col-id {
+  width: 80px;
+}
+
+.col-actions {
+  width: 120px;
+}
+
+.empty {
+  border: 1px dashed #cfd6df;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fbfcfe;
+}

@@ -1,0 +1,17 @@
+<header class="app-header">
+	<div class="container header-inner">
+		<div class="brand">
+			<div class="brand-title">{{ title() }}</div>
+			<div class="brand-subtitle">Travel reimbursements</div>
+		</div>
+
+		<nav class="nav">
+			<a routerLink="/travels" routerLinkActive="active" class="nav-link">Travels</a>
+			<a routerLink="/travels/upload" routerLinkActive="active" class="nav-link">Upload</a>
+		</nav>
+	</div>
+</header>
+
+<main class="container app-main">
+	<router-outlet />
+</main>

@@ -1,0 +1,50 @@
+.app-header {
+	background: white;
+	border-bottom: 1px solid #e6e8ec;
+}
+
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	padding: 14px 0;
+}
+
+.brand-title {
+	font-weight: 800;
+	letter-spacing: 0.2px;
+}
+
+.brand-subtitle {
+	font-size: 12px;
+	color: #5a6472;
+	margin-top: 2px;
+}
+
+.nav {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.nav-link {
+	color: #2d3748;
+	text-decoration: none;
+	padding: 8px 10px;
+	border-radius: 8px;
+}
+
+.nav-link:hover {
+	background: #f3f5f7;
+}
+
+.nav-link.active {
+	background: #eaf2ff;
+	color: #0b4cbf;
+}
+
+.app-main {
+	padding: 18px 0 32px;
+}

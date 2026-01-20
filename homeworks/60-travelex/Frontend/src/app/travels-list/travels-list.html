@@ -1,0 +1,55 @@
+<div class="page-header">
+  <div>
+    <h1>Travels</h1>
+    <p class="subtitle">All uploaded travel claims</p>
+  </div>
+
+  <div class="actions">
+    <a class="button" routerLink="/travels/upload">Upload travel file</a>
+    <button class="button secondary" (click)="refresh()" [disabled]="loading()">Refresh</button>
+  </div>
+</div>
+
+@if (loading()) {
+  <p class="hint">Loading…</p>
+}
+
+@if (error()) {
+  <div class="alert error">
+    <strong>Error:</strong> {{ error() }}
+  </div>
+}
+
+@if (travels() && travels()!.length === 0) {
+  <div class="empty">
+    <p>No travels yet.</p>
+    <p class="hint">Upload a travel file to get started.</p>
+  </div>
+}
+
+@if (travels() && travels()!.length > 0) {
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-id">Id</th>
+          <th>Traveler</th>
+          <th>Purpose</th>
+          <th class="col-actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of travels()!; track t.id) {
+          <tr>
+            <td class="mono">{{ t.id }}</td>
+            <td>{{ t.travelerName }}</td>
+            <td>{{ t.purpose }}</td>
+            <td class="right">
+              <a class="button small" [routerLink]="['/travels', t.id]">Details</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

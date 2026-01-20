@@ -1,0 +1,7 @@
+2026-01-19T07:30:00Z|2026-01-20T17:00:00Z|John Doe|Training at Customer XYZ
+DRIVE|75|Drive to airport
+EXPENSE|498|Flight to/from Bregenz
+EXPENSE|25|Taxi fare
+EXPENSE|120|Hotel stay
+EXPENSE|25|Taxi fare
+DRIVE|75|Drive from airport

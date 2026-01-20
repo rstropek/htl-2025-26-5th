@@ -1,0 +1,79 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: #5a6472;
+  margin: 4px 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  padding: 14px;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 0;
+}
+
+@media (min-width: 540px) {
+  .kv {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kv dt {
+  font-size: 12px;
+  color: #5a6472;
+}
+
+.kv dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+}
+
+.total dd {
+  font-size: 18px;
+}
+
+.table {
+  margin-top: 10px;
+}
+
+.col-id {
+  width: 60px;
+}
+
+.col-type {
+  width: 100px;
+}
+
+.col-num {
+  width: 120px;
+}
+
