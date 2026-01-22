@@ -39,6 +39,13 @@ public class ReimbursementCalculator : IReimbursementCalculator
 
         var duration = end - start;
 
+        // Only trips longer than 3 hours qualify. If they qualify, all started hours count
+        // (including the first 3 hours), subject to a max of 30€ per 24-hour block.
+        if (duration <= TimeSpan.FromHours(3))
+        {
+            return 0m;
+        }
+
         var fullDays = (int)(duration.Ticks / TimeSpan.TicksPerDay);
         var remainder = duration - TimeSpan.FromDays(fullDays);
 
@@ -49,11 +56,6 @@ public class ReimbursementCalculator : IReimbursementCalculator
 
     private static decimal CalculatePerDiemRemainder(TimeSpan remainder)
     {
-        if (remainder <= TimeSpan.FromHours(3))
-        {
-            return 0m;
-        }
-
         if (remainder > TimeSpan.FromHours(11))
         {
             return 30m;
