@@ -1,0 +1,45 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: #5a6472;
+  margin: 4px 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.card {
+  padding: 14px;
+  max-width: 720px;
+}
+
+.form-row {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="file"] {
+  padding: 8px;
+  border: 1px solid #cfd6df;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.hint {
+  font-size: 13px;
+}

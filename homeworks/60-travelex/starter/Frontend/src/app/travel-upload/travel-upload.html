@@ -1,0 +1,41 @@
+<div class="page-header">
+  <div>
+    <h1>Upload travel file</h1>
+    <p class="subtitle">Upload a travel .txt file and store it</p>
+  </div>
+
+  <div class="actions">
+    <a class="button secondary" routerLink="/travels">Back to list</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="form-row">
+    <label for="file">Travel file (.txt)</label>
+    <input
+      id="file"
+      type="file"
+      accept=".txt,text/plain"
+      (change)="onFileSelected($event)"
+      [disabled]="loading()"
+    />
+    <div class="hint">The backend will validate the file format.</div>
+  </div>
+
+  <div class="form-row">
+    <button class="button" (click)="upload()" [disabled]="loading() || !selectedFile()">
+      @if (loading()) {
+        Uploading…
+      } @else {
+        Upload
+      }
+    </button>
+  </div>
+
+  @if (error()) {
+    @let e = error()!;
+    <div class="alert error">
+      <strong>{{ e.errorCode }}:</strong> {{ e.message }}
+    </div>
+  }
+</div>

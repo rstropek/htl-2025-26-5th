@@ -1,0 +1,54 @@
+<div class="page-header">
+  <div>
+    <h1>Travels</h1>
+    <p class="subtitle">All uploaded travel claims</p>
+  </div>
+
+  <div class="actions">
+    <a class="button" routerLink="/travels/upload">Upload travel file</a>
+    
+    <!-- Trigger loading, disable while loading -->
+    <button class="button secondary">Refresh</button>
+  </div>
+</div>
+
+<!-- Loading indicator, display only while loading -->
+  <p class="hint">Loading…</p>
+
+<!-- Error message, display only if error -->
+  <div class="alert error">
+    <strong>Error:</strong> {{ 'TODO' }}
+  </div>
+
+<!-- Empty state, display only if no travels -->
+  <div class="empty">
+    <p>No travels yet.</p>
+    <p class="hint">Upload a travel file to get started.</p>
+  </div>
+
+<!-- Travels table, display only if travels exist -->
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-id">Id</th>
+          <th>Traveler</th>
+          <th>Purpose</th>
+          <th class="col-actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Repeat for each travel -->
+          <tr>
+            <!-- Add data binding -->
+            <td class="mono">{{ 'TODO' }}</td>
+            <td>{{ 'TODO' }}</td>
+            <td>{{ 'TODO' }}</td>
+            <td class="right">
+              <!-- Replace 42 with actual travel id -->
+              <a class="button small" [routerLink]="['/travels', 42]">Details</a>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,189 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebApi | v1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/ping": {
+      "get": {
+        "tags": [
+          "WebApi"
+        ],
+        "description": "A simple ping endpoint to check if the service is running.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/travels/upload": {
+      "post": {
+        "tags": [
+          "Travels"
+        ],
+        "description": "Uploads a travel .txt file, parses it, stores it, and returns the created travel.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "file"
+                ],
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TravelDetailsDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TravelUploadErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TravelDetailsDto": {
+        "required": [
+          "id",
+          "start",
+          "end",
+          "travelerName",
+          "purpose",
+          "mileage",
+          "perDiem",
+          "expenses",
+          "reimbursements"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "travelerName": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "mileage": {
+            "type": "number",
+            "format": "double"
+          },
+          "perDiem": {
+            "type": "number",
+            "format": "double"
+          },
+          "expenses": {
+            "type": "number",
+            "format": "double"
+          },
+          "reimbursements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelReimbursementDto"
+            }
+          }
+        }
+      },
+      "TravelReimbursementDto": {
+        "required": [
+          "id",
+          "type",
+          "description",
+          "km",
+          "amount"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "km": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "TravelUploadErrorDto": {
+        "required": [
+          "errorCode",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "WebApi"
+    },
+    {
+      "name": "Travels"
+    }
+  ]
+}

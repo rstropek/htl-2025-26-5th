@@ -1,0 +1,1 @@
+2026-01-19T07:00:00Z|2026-01-20T14:30:00Z|Max Mustermann|Per diem example from calculation-logic.md

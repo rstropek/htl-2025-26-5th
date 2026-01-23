@@ -1,0 +1,102 @@
+<div class="page-header">
+  <div>
+    <h1>Travel details</h1>
+    <p class="subtitle">Reimbursement calculation & entries</p>
+  </div>
+
+  <div class="actions">
+    <a class="button secondary" routerLink="/travels">Back to list</a>
+    <a class="button" routerLink="/travels/upload">Upload another</a>
+  </div>
+</div>
+
+<!-- Loading indicator, display only while loading -->
+  <p class="hint">Loading…</p>
+
+<!-- Error message, display only if error -->
+  <div class="alert error">
+    <strong>Error:</strong> {{ 'TODO' }}
+  </div>
+
+<!-- Main content, display only if data is available -->
+  <div class="grid">
+    <div class="card">
+      <h2>Overview</h2>
+
+      <dl class="kv">
+        <div>
+          <dt>Id</dt>
+          <dd class="mono">{{ 'TODO' }}</dd>
+        </div>
+        <div>
+          <dt>Traveler</dt>
+          <dd>{{ 'TODO' }}</dd>
+        </div>
+        <div>
+          <dt>Purpose</dt>
+          <dd>{{ 'TODO' }}</dd>
+        </div>
+        <div>
+          <dt>Start</dt>
+          <dd>{{ '2026-01-01T08:00:00+00:00' | date: 'short' }}</dd>
+        </div>
+        <div>
+          <dt>End</dt>
+          <dd>{{ '2026-01-02T18:00:00+00:00' | date: 'short' }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="card">
+      <h2>Totals</h2>
+
+      <dl class="kv">
+        <div>
+          <dt>Mileage</dt>
+          <dd>{{ 'TODO' }}</dd>
+        </div>
+        <div>
+          <dt>Per diem</dt>
+          <dd>{{ 42 | number: '1.2-2' }}</dd>
+        </div>
+        <div>
+          <dt>Expenses</dt>
+          <dd>{{ 42 | number: '1.2-2' }}</dd>
+        </div>
+        <div class="total">
+          <dt>Total</dt>
+          <dd>{{ 42 | number: '1.2-2' }}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 16px;">
+    <h2>Reimbursements</h2>
+
+    <!-- Display reimbursements only if available -->
+      <p class="hint">No reimbursement entries.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-id">Id</th>
+            <th class="col-type">Type</th>
+            <th>Description</th>
+            <th class="col-num">KM</th>
+            <th class="col-num">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Repeat for each reimbursement -->
+            <tr>
+              <td class="mono">{{ 'TODO' }}</td>
+              <td class="mono">{{ 'TODO' }}</td>
+              <td>{{ 'TODO' }}</td>
+              <td class="right">{{ 'TODO' }}</td>
+              <td class="right">{{ 42 | number: '1.2-2' }}</td>
+            </tr>
+        </tbody>
+      </table>
+  </div>
+
