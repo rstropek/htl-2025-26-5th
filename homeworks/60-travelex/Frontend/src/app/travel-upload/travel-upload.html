@@ -19,27 +19,23 @@
       (change)="onFileSelected($event)"
       [disabled]="loading()"
     />
-    <div class="hint">
-      The backend will validate the file format.
-    </div>
+    <div class="hint">The backend will validate the file format.</div>
   </div>
 
   <div class="form-row">
     <button class="button" (click)="upload()" [disabled]="loading() || !selectedFile()">
-      @if (loading()) { Uploading… } @else { Upload }
+      @if (loading()) {
+        Uploading…
+      } @else {
+        Upload
+      }
     </button>
   </div>
 
   @if (error()) {
-    @let e = error();
+    @let e = error()!;
     <div class="alert error">
-      @if (isString(e)) {
-        <strong>Error:</strong> {{ e }}
-      } @else if (isUploadErrorDto(e)) {
-        <strong>{{ e.errorCode }}:</strong> {{ e.message }}
-      } @else {
-        <strong>Error:</strong> Upload failed.
-      }
+      <strong>{{ e.errorCode }}:</strong> {{ e.message }}
     </div>
   }
 </div>

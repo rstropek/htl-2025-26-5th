@@ -1,56 +1,37 @@
-import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, OnInit, inject, input, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { Api } from '../api/api';
 import { TravelDetailsDto } from '../api/models';
 import { travelsIdGet } from '../api/functions';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-travel-details',
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe, DecimalPipe],
   templateUrl: './travel-details.html',
   styleUrl: './travel-details.css'
 })
-export class TravelDetails {
+export class TravelDetails implements OnInit {
   protected readonly travel = signal<TravelDetailsDto | null>(null);
   protected readonly loading = signal<boolean>(false);
   protected readonly error = signal<string | null>(null);
 
   private readonly api = inject(Api);
-  private readonly route = inject(ActivatedRoute);
 
-  async ngOnInit() {
-    const idText = this.route.snapshot.paramMap.get('id');
+  protected readonly id = input.required<string>();
+
+  public ngOnInit(): void {
+    const idText = this.id();
     const id = Number(idText);
 
     if (!idText || Number.isNaN(id)) {
       this.error.set('Invalid travel id.');
+      this.travel.set(null);
       return;
     }
 
-    await this.load(id);
-  }
-
-  protected formatDate(value: string): string {
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) {
-      return value;
-    }
-
-    return new Intl.DateTimeFormat(undefined, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date);
-  }
-
-  protected formatMoney(value: number): string {
-    return new Intl.NumberFormat(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(value);
+    void this.load(id);
   }
 
   protected total(t: TravelDetailsDto): number {

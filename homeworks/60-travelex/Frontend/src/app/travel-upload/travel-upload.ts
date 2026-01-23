@@ -14,7 +14,7 @@ import { travelsUploadPost } from '../api/functions';
 export class TravelUpload {
   protected readonly selectedFile = signal<File | null>(null);
   protected readonly loading = signal<boolean>(false);
-  protected readonly error = signal<TravelUploadErrorDto | string | null>(null);
+  protected readonly error = signal<TravelUploadErrorDto | null>(null);
 
   private readonly api = inject(Api);
   private readonly router = inject(Router);
@@ -29,7 +29,7 @@ export class TravelUpload {
   protected async upload() {
     const file = this.selectedFile();
     if (!file) {
-      this.error.set('Please choose a .txt file first.');
+      this.error.set({ message: 'Please choose a .txt file first.', errorCode: 'NoFileSelected' });
       return;
     }
 
@@ -50,25 +50,14 @@ export class TravelUpload {
       if (apiError && typeof apiError === 'object' && 'errorCode' in apiError && 'message' in apiError) {
         this.error.set(apiError as TravelUploadErrorDto);
       } else if (typeof apiError === 'string' && apiError.length > 0) {
-        this.error.set(apiError);
+        this.error.set({ message: apiError, errorCode: 'UnknownError' });
       } else if (typeof err?.message === 'string' && err.message.length > 0) {
-        this.error.set(err.message);
+        this.error.set({ message: err.message, errorCode: 'UnknownError' });
       } else {
-        this.error.set('Upload failed.');
+        this.error.set({ message: 'Upload failed.', errorCode: 'UnknownError' });
       }
     } finally {
       this.loading.set(false);
     }
-  }
-
-  protected isString(value: unknown): value is string {
-    return typeof value === 'string';
-  }
-
-  protected isUploadErrorDto(value: unknown): value is TravelUploadErrorDto {
-    return !!value
-      && typeof value === 'object'
-      && 'errorCode' in (value as any)
-      && 'message' in (value as any);
   }
 }
