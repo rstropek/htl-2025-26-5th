@@ -266,7 +266,7 @@ public class ReimbursementCalculatorTests
     }
 
     [Fact]
-    public void Expenses_AreZero_WhenMileageAllowanceIsClaimed()
+    public void Expenses_AreSummed_EvenWhenMileageAllowanceIsClaimed()
     {
         var reimbursements = new Reimbursement[]
         {
@@ -284,7 +284,7 @@ public class ReimbursementCalculatorTests
         var calc = new ReimbursementCalculator();
         var result = calc.CalculateReimbursement(travel);
 
-        Assert.Equal(0m, result.Expenses);
+        Assert.Equal(100m, result.Expenses);
     }
 
     [Fact]

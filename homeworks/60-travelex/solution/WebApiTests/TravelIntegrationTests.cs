@@ -101,8 +101,8 @@ public class TravelIntegrationTests(WebApiTestFixture fixture) : IClassFixture<W
         Assert.Equal(37.5m, details.Mileage);
         // per diem: 10 hours => ceil(10) * 2.50 = 25
         Assert.Equal(25m, details.PerDiem);
-        // expenses: mileage claimed => 0
-        Assert.Equal(0m, details.Expenses);
+        // expenses: 120
+        Assert.Equal(120m, details.Expenses);
 
         Assert.Contains(details.Reimbursements, r => r.Type == "DRIVE" && r.Km == 75 && r.Description == "To airport");
         Assert.Contains(details.Reimbursements, r => r.Type == "EXPENSE" && r.Amount == 120 && r.Description == "Hotel");

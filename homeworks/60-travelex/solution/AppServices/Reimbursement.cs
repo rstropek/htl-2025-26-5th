@@ -22,10 +22,9 @@ public class ReimbursementCalculator : IReimbursementCalculator
 
         var perDiem = CalculatePerDiem(travel.Start, travel.End);
 
-        // If mileage allowance is claimed, it covers all expenses (incl. parking/tolls).
-        var expenses = mileageKm > 0
-            ? 0m
-            : travel.Reimbursements.OfType<ExpenseReimbursement>().Sum(e => (decimal)e.Amount);
+        var expenses = travel.Reimbursements
+            .OfType<ExpenseReimbursement>()
+            .Sum(e => (decimal)e.Amount);
 
         return new ReimbursementResult(mileage, perDiem, expenses);
     }
