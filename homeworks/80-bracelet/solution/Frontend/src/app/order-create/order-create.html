@@ -1,0 +1,65 @@
+<h2>New Order</h2>
+
+<div class="order-layout">
+  <div class="order-left">
+    <div class="form-section">
+      <label for="name">Customer Name</label>
+      <input id="name" type="text" [(ngModel)]="customerName" placeholder="Your name" />
+
+      <label for="address">Customer Address</label>
+      <input id="address" type="text" [(ngModel)]="customerAddress" placeholder="Your address" />
+    </div>
+
+    <h3>Bracelets</h3>
+
+    @if (bracelets().length > 0) {
+      <div class="bracelet-list">
+        @for (b of bracelets(); track $index) {
+          <div class="bracelet-item">
+            <app-bracelet-preview [items]="b.items" />
+            <button class="remove-btn" (click)="removeBracelet($index)">Remove</button>
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="empty-hint">No bracelets added yet.</p>
+    }
+
+    <div class="order-summary">
+      <p class="total">Total: {{ totalCost() | number:'1.2-2' }} EUR</p>
+      <button class="place-order-btn" (click)="placeOrder()">Place Order</button>
+    </div>
+
+    @if (error()) {
+      <div class="error">{{ error() }}</div>
+    }
+  </div>
+
+  <div class="order-right">
+    <h3>Build a Bracelet</h3>
+    <app-bracelet-builder (braceletChanged)="onBraceletChanged($event)" />
+
+    <button class="add-btn" (click)="addBracelet()" [disabled]="validatingBracelet()">Add to Order</button>
+
+    @if (braceletError()) {
+      <div class="error">
+        @switch (braceletError()) {
+          @case ('Empty') { Bracelet cannot be empty. }
+          @case ('InvalidLetter') { Bracelet contains an invalid letter. }
+          @case ('InvalidColor') { Bracelet contains an invalid color. }
+          @case ('TooManyLetters') { A bracelet can have at most 10 letters. }
+          @case ('EndsWithSpacer') { Bracelet must end with a letter, not a spacer. }
+          @case ('NetworkError') { Failed to validate bracelet. }
+          @default { Invalid bracelet. }
+        }
+      </div>
+    }
+
+    @if (braceletWarning()) {
+      <div class="warning">
+        {{ braceletWarning() }}
+        <button class="add-anyway-btn" (click)="addAnyway()">Add Anyway</button>
+      </div>
+    }
+  </div>
+</div>

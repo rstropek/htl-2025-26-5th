@@ -1,0 +1,32 @@
+<h2>Orders</h2>
+
+<div class="filter">
+  <label for="minCost">Min. order amount (EUR):</label>
+  <input id="minCost" type="number" min="0" step="0.5" [(ngModel)]="minTotalCosts" />
+  <button (click)="loadOrders()">Apply Filter</button>
+</div>
+
+@if (orders().length === 0) {
+  <p>No orders yet.</p>
+} @else {
+  <table>
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Date</th>
+        <th>Bracelets</th>
+        <th>Total Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of orders(); track order.id) {
+        <tr>
+          <td><a [routerLink]="['/orders', order.id]">{{ order.customerName }}</a></td>
+          <td>{{ order.orderDate | date:'short' }}</td>
+          <td>{{ order.numberOfBracelets }}</td>
+          <td>{{ order.totalCosts | currency:'EUR' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

@@ -1,0 +1,25 @@
+nav {
+  display: flex;
+  gap: 16px;
+  padding: 12px 24px;
+  background-color: #c8a0d0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+main {
+  padding: 0 24px;
+}

@@ -1,0 +1,53 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebApi | v1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/ping": {
+      "get": {
+        "tags": [
+          "WebApi"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PingResultDto": {
+        "required": [
+          "message",
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "WebApi"
+    }
+  ]
+}

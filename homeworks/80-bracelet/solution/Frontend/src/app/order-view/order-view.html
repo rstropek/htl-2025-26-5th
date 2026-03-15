@@ -1,0 +1,35 @@
+@if (order(); as o) {
+  <h2>Order #{{ o.id }}</h2>
+
+  <div class="order-layout">
+    <div class="order-left">
+      <div class="form-section">
+        <label>Customer Name</label>
+        <p class="readonly-value">{{ o.customerName }}</p>
+
+        <label>Customer Address</label>
+        <p class="readonly-value">{{ o.customerAddress }}</p>
+
+        <label>Order Date</label>
+        <p class="readonly-value">{{ o.orderDate | date:'short' }}</p>
+      </div>
+
+      <h3>Bracelets</h3>
+
+      <div class="bracelet-list">
+        @for (item of o.orderItems; track item.id) {
+          <div class="bracelet-item">
+            <app-bracelet-preview [items]="item.items" />
+            <span class="cost">{{ item.costs | currency:'EUR' }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="order-summary">
+        <p class="total">Total: {{ o.totalCosts | currency:'EUR' }}</p>
+      </div>
+    </div>
+  </div>
+} @else {
+  <p>Loading...</p>
+}

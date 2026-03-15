@@ -1,0 +1,39 @@
+<div class="preview">
+  <div class="bracelet">
+    @for (item of items(); track $index) {
+      @if (item.type === 'letter') {
+        <div class="cube">{{ item.value }}</div>
+      } @else {
+        <div class="bead" [style.backgroundColor]="item.hex"></div>
+      }
+    }
+  </div>
+</div>
+
+<div class="controls">
+  <div class="control-section">
+    <div class="grid">
+      @for (letter of letters; track letter) {
+        <button
+          (click)="addLetter(letter)"
+        >{{ letter }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="control-section">
+    <div class="color-row">
+      @for (color of colors; track color.hex) {
+        <button
+          [style.backgroundColor]="color.hex"
+          (click)="addSpacer(color)"
+        ></button>
+      }
+    </div>
+  </div>
+
+  <div class="action-row">
+    <button class="undo-btn" (click)="undo()">Undo</button>
+    <button class="reset-btn" (click)="reset()">Reset</button>
+  </div>
+</div>

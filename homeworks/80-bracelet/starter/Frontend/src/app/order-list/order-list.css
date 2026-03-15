@@ -1,0 +1,44 @@
+h2 {
+  margin-bottom: 16px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter input {
+  width: 120px;
+  padding: 4px 8px;
+}
+
+.filter button {
+  padding: 4px 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0eef8;
+  font-weight: bold;
+}
+
+a {
+  color: #6040a0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

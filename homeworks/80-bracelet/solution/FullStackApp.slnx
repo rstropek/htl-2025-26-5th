@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AppHost/AppHost.csproj" />
+  <Project Path="AppServices/AppServices.csproj" />
+  <Project Path="AppServicesTests/AppServicesTests.csproj" />
+  <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
+  <Project Path="TestInfrastructure/TestInfrastructure.csproj" />
+  <Project Path="WebApi/WebApi.csproj" />
+  <Project Path="WebApiTests/WebApiTests.csproj" />
+</Solution>

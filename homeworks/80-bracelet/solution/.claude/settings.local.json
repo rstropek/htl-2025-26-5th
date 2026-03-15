@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet test:*)",
+      "Bash(dotnet ef:*)",
+      "Bash(npx ng:*)",
+      "Bash(dotnet build:*)"
+    ]
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebApi | v1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/ping": {
+      "get": {
+        "tags": [
+          "WebApi"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "get": {
+        "tags": [
+          "WebApi"
+        ],
+        "parameters": [
+          {
+            "name": "minTotalCosts",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderListDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "WebApi"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/orders/{id}": {
+      "get": {
+        "tags": [
+          "WebApi"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/validate-bracelet": {
+      "post": {
+        "tags": [
+          "WebApi"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateBraceletDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BraceletValidationResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BraceletValidationResultDto": {
+        "required": [
+          "error",
+          "mixedColorsWarning",
+          "cost"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "nullable": true
+          },
+          "mixedColorsWarning": {
+            "type": "boolean"
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        }
+      },
+      "CreateOrderDto": {
+        "required": [
+          "customerName",
+          "customerAddress",
+          "bracelets"
+        ],
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "type": "string"
+          },
+          "customerAddress": {
+            "type": "string"
+          },
+          "bracelets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "OrderDetailDto": {
+        "required": [
+          "id",
+          "customerName",
+          "customerAddress",
+          "orderDate",
+          "totalCosts",
+          "orderItems"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "customerAddress": {
+            "type": "string"
+          },
+          "orderDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalCosts": {
+            "type": "number",
+            "format": "double"
+          },
+          "orderItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemDto"
+            }
+          }
+        }
+      },
+      "OrderItemDto": {
+        "required": [
+          "id",
+          "braceletData",
+          "costs"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "braceletData": {
+            "type": "string"
+          },
+          "costs": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "OrderListDto": {
+        "required": [
+          "id",
+          "customerName",
+          "orderDate",
+          "totalCosts",
+          "numberOfBracelets"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "orderDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalCosts": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfBracelets": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PingResultDto": {
+        "required": [
+          "message",
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ValidateBraceletDto": {
+        "required": [
+          "braceletData"
+        ],
+        "type": "object",
+        "properties": {
+          "braceletData": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "WebApi"
+    }
+  ]
+}

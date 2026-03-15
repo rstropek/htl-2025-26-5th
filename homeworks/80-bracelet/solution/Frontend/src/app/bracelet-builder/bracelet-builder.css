@@ -1,0 +1,167 @@
+.preview {
+  background-color: #d4f0d4;
+  border: 2px solid #999;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bracelet {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  min-height: 50px;
+  padding: 0 30px;
+}
+
+.bracelet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  background-color: #c8a0d0;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.cube {
+  width: 40px;
+  height: 40px;
+  background-color: #f0eef8;
+  border: 2px solid #555;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+  position: relative;
+  z-index: 1;
+}
+
+.bead {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #999;
+  position: relative;
+  z-index: 1;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.control-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #fff;
+  align-self: stretch;
+}
+
+.grid button {
+  height: 40px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #555;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.grid button:hover:not(:disabled) {
+  background-color: #ddd;
+}
+
+.grid button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.color-row {
+  display: flex;
+  gap: 4px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #fff;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.color-row button {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 2px solid #999;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.color-row button:hover:not(:disabled) {
+  transform: scale(1.15);
+}
+
+.color-row button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.undo-btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #999;
+  border-radius: 4px;
+  background-color: #f0c8c8;
+  cursor: pointer;
+  flex: 1;
+}
+
+.undo-btn:hover {
+  background-color: #e0a0a0;
+}
+
+.reset-btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #999;
+  border-radius: 4px;
+  background-color: #c8c8f0;
+  cursor: pointer;
+  flex: 1;
+}
+
+.reset-btn:hover {
+  background-color: #a0a0e0;
+}

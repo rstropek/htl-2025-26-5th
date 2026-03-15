@@ -1,0 +1,45 @@
+.bracelet {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  min-height: 50px;
+  padding: 0 30px;
+}
+
+.bracelet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  background-color: #c8a0d0;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.cube {
+  width: 40px;
+  height: 40px;
+  background-color: #f0eef8;
+  border: 2px solid #555;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+  position: relative;
+  z-index: 1;
+}
+
+.bead {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #999;
+  position: relative;
+  z-index: 1;
+}

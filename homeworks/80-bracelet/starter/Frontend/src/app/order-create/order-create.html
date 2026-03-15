@@ -1,0 +1,69 @@
+<h2>New Order</h2>
+
+<div class="order-layout">
+  <div class="order-left">
+    <!-- TODO: Add bindings for customer data form -->
+    <div class="form-section">
+      <label for="name">Customer Name</label>
+      <input id="name" type="text" placeholder="Your name" />
+
+      <label for="address">Customer Address</label>
+      <input id="address" type="text" placeholder="Your address" />
+    </div>
+
+    <h3>Bracelets</h3>
+
+    <!-- TODO: Show bracelets only if there are any, otherwise display a message -->
+    <div class="bracelet-list">
+      <!-- TODO: Repeat for each bracelet -->
+      <div class="bracelet-item">
+        <app-bracelet-preview [items]="demoBracelet" />
+        <!-- TODO: Add event binding -->
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <!-- TODO: Add binding -->
+      <p class="total">Total: {{ "total costs with `number:'1.2-2'` pipe" }} EUR</p>
+      <!-- TODO: Add event binding -->
+      <button class="place-order-btn">Place Order</button>
+    </div>
+
+    <!-- TODO: Display only if there is an active error -->
+    <div class="error">{{ "error description" }}</div>
+  </div>
+
+  <div class="order-right">
+    <h3>Build a Bracelet</h3>
+    <app-bracelet-builder (braceletChanged)="onBraceletChanged($event)" />
+
+    <!-- TODO: Add event binding -->
+    <!-- TODO: Disable while validating bracelets/order -->
+    <button class="add-btn">Add to Order</button>
+
+    <!-- TODO: Display only if there is an active bracelet error -->
+    <div class="error">
+      <!-- TODO: Change to binding -->
+      @switch ('Empty') {
+        @case ('Empty') { Bracelet cannot be empty. }
+        <!--
+        @case ('InvalidLetter') { Bracelet contains an invalid letter. }
+        @case ('InvalidColor') { Bracelet contains an invalid color. }
+        @case ('TooManyLetters') { A bracelet can have at most 10 letters. }
+        @case ('EndsWithSpacer') { Bracelet must end with a letter, not a spacer. }
+        @case ('NetworkError') { Failed to validate bracelet. }
+        -->
+        @default { Invalid bracelet. }
+      }
+    </div>
+
+    <!-- TODO: Display only if warning is active -->
+    <div class="warning">
+      <!-- TODO: Add data binding -->
+      {{ "warning description" }}
+      <!-- TODO: Add event binding -->
+      <button class="add-anyway-btn">Add Anyway</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="preview">
+  <div class="bracelet">
+    @for (item of items(); track $index) {
+      @if (item.type === 'letter') {
+        <div class="cube">{{ item.value }}</div>
+      } @else {
+        <div class="bead" [style.backgroundColor]="item.hex"></div>
+      }
+    }
+  </div>
+</div>

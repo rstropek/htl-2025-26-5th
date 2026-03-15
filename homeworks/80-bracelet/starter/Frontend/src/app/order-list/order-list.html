@@ -1,0 +1,32 @@
+<h2>Orders</h2>
+
+<div class="filter">
+  <label for="minCost">Min. order amount (EUR):</label>
+  <!-- TODO: Add data binding -->
+  <input id="minCost" type="number" min="0" step="0.5" />
+  <!-- TODO: Add event handling -->
+  <button>Apply Filter</button>
+</div>
+
+<!-- TODO: Only display table if there are orders, otherwise display a message -->
+<table>
+  <thead>
+    <tr>
+      <th>Customer Name</th>
+      <th>Date</th>
+      <th>Bracelets</th>
+      <th>Total Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- TODO: Repeat for each order -->
+    <tr>
+      <!-- TODO: Add proper bindings to all columns -->
+      <!-- TODO: Turn first column into a link to order-view route -->
+      <td><a>{{ "customer name" }}</a></td>
+      <td>{{ "order date with `date:'short'` pipe" }}</td>
+      <td>{{ "number of bracelets" }}</td>
+      <td>{{ "total costs with `currency:'EUR'` pipe" }}</td>
+    </tr>
+  </tbody>
+</table>
