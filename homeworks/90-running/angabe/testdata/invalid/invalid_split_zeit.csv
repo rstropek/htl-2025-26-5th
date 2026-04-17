@@ -1,0 +1,8 @@
+Ungültige Datei – Km-Split-Zeit hat ein ungültiges Format (Sekunden > 59)
+
+Startnummer,Vorname,Nachname,AngestrebteGesamtzeit,KmNummer,Zeit
+1,Eva,Muster,25:00,1,4:50
+1,Eva,Muster,25:00,2,5:00
+1,Eva,Muster,25:00,3,5:72
+1,Eva,Muster,25:00,4,5:02
+1,Eva,Muster,25:00,5,5:03

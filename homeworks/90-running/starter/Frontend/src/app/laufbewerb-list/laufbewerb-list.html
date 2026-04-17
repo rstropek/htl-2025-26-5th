@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>Laufbewerbe</h1>
+
+  <div class="toolbar">
+    <a class="primary" [routerLink]="['/laufbewerbe/new']">+ Laufbewerb hinzufügen</a>
+  </div>
+
+  <div class="filters">
+    <div class="filter-field">
+      <label for="name">Name enthält</label>
+      <!-- TODO: Add data binding -->
+      <input id="name" type="text" placeholder="z.B. Marathon" />
+    </div>
+
+    <div class="filter-field">
+      <label for="laufkategorie">Laufkategorie</label>
+      <!-- TODO: Add data binding -->
+      <select id="laufkategorie">
+        <option value="">(alle)</option>
+        <!-- TODO: Repeat for each Laufkategorie -->
+        <option>{{ "kategorie.bezeichnung" }}</option>
+      </select>
+    </div>
+
+    <div class="filter-actions">
+      <!-- TODO: Add event binding -->
+      <button type="button">Filter anwenden</button>
+      <!-- TODO: Add event binding and disabled state -->
+      <button type="button">Filter zurücksetzen</button>
+    </div>
+  </div>
+
+  <!-- TODO: Show loading state while data is being fetched -->
+  <div class="state">Lade Daten...</div>
+
+  <!-- TODO: Show error state if loading failed -->
+  <div class="state error">{{ "error message" }}</div>
+
+  <!-- TODO: Only display table if data loaded successfully -->
+  <!-- TODO: Show "Keine Laufbewerbe gefunden." if list is empty -->
+  <div class="table">
+    <div class="h">ID</div>
+    <div class="h">Name</div>
+    <div class="h">Kategorie</div>
+    <div class="h num">Streckenlänge (km)</div>
+    <div class="h">Datum</div>
+    <div class="h">Ort</div>
+    <div class="h">Aktionen</div>
+
+    <!-- TODO: Repeat for each Laufbewerb -->
+    <div class="c">{{ "b.id" }}</div>
+    <div class="c">{{ "b.name" }}</div>
+    <div class="c">{{ "b.laufkategorieBezeichnung" }}</div>
+    <div class="c num">{{ "b.streckenlänge with number:'1.2-2' pipe" }}</div>
+    <div class="c">{{ "b.datum" }}</div>
+    <div class="c">{{ "b.ort" }}</div>
+    <div class="c actions">
+      <!-- TODO: Add routerLink to edit route -->
+      <a>Ändern</a>
+      <!-- TODO: Add event binding -->
+      <button type="button" class="danger">Löschen</button>
+    </div>
+  </div>
+</div>

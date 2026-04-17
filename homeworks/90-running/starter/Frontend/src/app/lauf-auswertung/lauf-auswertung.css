@@ -1,0 +1,38 @@
+.table {
+  grid-template-columns: 0.5fr 1fr 1fr 1.2fr 1fr;
+  margin-top: 1rem;
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+  align-items: baseline;
+}
+
+.totals-label {
+  font-size: 0.9rem;
+}
+
+.totals-value {
+  text-align: right;
+}
+
+.ziel-erreicht {
+  color: green;
+  font-weight: 600;
+}
+
+.ziel-nicht-erreicht {
+  color: red;
+  font-weight: 600;
+}
+
+.unter-ziel {
+  color: green;
+}
+
+.ueber-ziel {
+  color: red;
+}

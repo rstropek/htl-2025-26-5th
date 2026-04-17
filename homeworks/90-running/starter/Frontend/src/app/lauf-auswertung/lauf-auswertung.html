@@ -1,0 +1,74 @@
+<div class="container">
+  <h1>Lauf-Auswertung</h1>
+
+  <form>
+    <div class="grid">
+      <div class="field">
+        <label for="laufbewerb">Laufbewerb</label>
+        <!-- TODO: Add data binding and change event -->
+        <select id="laufbewerb" name="laufbewerb">
+          <option value="">(bitte auswählen)</option>
+          <!-- TODO: Repeat for each Laufbewerb -->
+          <option>{{ "b.datum – b.name (b.ort)" }}</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="teilnehmer">Teilnehmer/in</label>
+        <!-- TODO: Add data binding -->
+        <select id="teilnehmer" name="teilnehmer">
+          <option value="">(bitte auswählen)</option>
+          <!-- TODO: Repeat for each Teilnehmer -->
+          <option>{{ "Nr. t.startnummer – t.vorname t.nachname" }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <!-- TODO: Add disabled state and event binding -->
+      <button type="button">
+        {{ "Berechne... / Auswerten depending on loading state" }}
+      </button>
+    </div>
+  </form>
+
+  <!-- TODO: Show error state if request failed -->
+  <div class="state error">{{ "error message" }}</div>
+
+  <!-- TODO: Only display results if auswertung was successful -->
+  <div class="state totals">
+    <div class="totals-grid">
+      <div class="totals-label">Gesamtzeit</div>
+      <!-- TODO: Add binding -->
+      <div class="totals-value">{{ "gesamtZeitFormatiert" }}</div>
+
+      <div class="totals-label">Ø Geschwindigkeit (km/h)</div>
+      <!-- TODO: Add binding with number:'1.2-2' pipe -->
+      <div class="totals-value">{{ "gesamtGeschwindigkeitKmH" }}</div>
+
+      <div class="totals-label">Ziel erreicht</div>
+      <!-- TODO: Add class binding for ziel-erreicht / ziel-nicht-erreicht -->
+      <div class="totals-value">
+        {{ "Ja ✓ / Nein ✗ depending on zielErreicht" }}
+      </div>
+    </div>
+  </div>
+
+  <div class="table">
+    <div class="h num">km</div>
+    <div class="h num">Länge (km)</div>
+    <div class="h">Zeit</div>
+    <div class="h num">Ø Tempo (km/h)</div>
+    <div class="h">Bewertung</div>
+
+    <!-- TODO: Repeat for each row in result -->
+    <div class="c num">{{ "r.kmNummer" }}</div>
+    <div class="c num">{{ "r.segmentLaenge with number:'1.2-2' pipe" }}</div>
+    <div class="c">{{ "r.zeitFormatiert" }}</div>
+    <div class="c num">{{ "r.geschwindigkeitKmH with number:'1.2-2' pipe" }}</div>
+    <!-- TODO: Add class binding for unter-ziel / ueber-ziel -->
+    <div class="c">
+      {{ "✓ Im Soll / ✗ Unter Soll depending on unterZielTempo" }}
+    </div>
+  </div>
+</div>

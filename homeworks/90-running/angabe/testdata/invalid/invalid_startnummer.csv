@@ -1,0 +1,8 @@
+Ungültige Datei – Startnummer ist keine gültige positive ganze Zahl
+
+Startnummer,Vorname,Nachname,AngestrebteGesamtzeit,KmNummer,Zeit
+A1,Eva,Muster,25:00,1,4:50
+A1,Eva,Muster,25:00,2,5:00
+A1,Eva,Muster,25:00,3,5:05
+A1,Eva,Muster,25:00,4,5:02
+A1,Eva,Muster,25:00,5,5:03

@@ -1,0 +1,8 @@
+Ungültige Datei – AngestrebteGesamtzeit hat ein ungültiges Format (Sekunden > 59)
+
+Startnummer,Vorname,Nachname,AngestrebteGesamtzeit,KmNummer,Zeit
+1,Eva,Muster,25:75,1,4:50
+1,Eva,Muster,25:75,2,5:00
+1,Eva,Muster,25:75,3,5:05
+1,Eva,Muster,25:75,4,5:02
+1,Eva,Muster,25:75,5,5:03

@@ -1,0 +1,204 @@
+/* Global styles kept intentionally simple for exam solution */
+
+:root {
+	--border: #eee;
+	--border-strong: #ddd;
+	--surface: #fff;
+	--surface-muted: #f7f7f7;
+	--danger: #b02a37;
+	--danger-border: #f5c2c7;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+	line-height: 1.4;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.container {
+	padding: 1.5rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+h1 {
+	margin: 0 0 1rem;
+}
+
+main {
+	display: block;
+}
+
+/* Navigation */
+.top-nav {
+	display: flex;
+	gap: 1rem;
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.top-nav a {
+	text-decoration: none;
+}
+
+.top-nav a:hover {
+	text-decoration: underline;
+}
+
+/* Forms and input controls */
+label {
+	font-size: 0.9rem;
+}
+
+input,
+select {
+	padding: 0.5rem;
+	border: 1px solid var(--border-strong);
+	border-radius: 4px;
+	font: inherit;
+}
+
+input.invalid,
+select.invalid {
+	border-color: var(--danger);
+}
+
+button {
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--border-strong);
+	border-radius: 4px;
+	background: var(--surface);
+	cursor: pointer;
+	font: inherit;
+}
+
+button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+button.danger {
+	border-color: var(--danger-border);
+	color: var(--danger);
+}
+
+form,
+.filters,
+.state {
+	padding: 1rem;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+}
+
+.state {
+	margin-bottom: 1rem;
+}
+
+.state.error {
+	border-color: var(--danger-border);
+	color: var(--danger);
+	white-space: pre-line;
+}
+
+.field,
+.filter-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.errors {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	color: var(--danger);
+	font-size: 0.85rem;
+}
+
+form .actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.75rem;
+	margin-top: 1rem;
+}
+
+.toolbar {
+	display: flex;
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+}
+
+.toolbar a {
+	text-decoration: none;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--border-strong);
+	border-radius: 4px;
+}
+
+.toolbar a.primary {
+	font-weight: 600;
+}
+
+/* Common grid layouts */
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.filter-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.75rem;
+}
+
+/* Table-like grids */
+.table {
+	display: grid;
+	gap: 1px;
+	background: var(--border);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.h {
+	background: var(--surface-muted);
+	padding: 0.75rem;
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.c {
+	background: var(--surface);
+	padding: 0.75rem;
+	display: flex;
+	align-items: center;
+}
+
+.num {
+	justify-content: flex-end;
+	text-align: right;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 1rem;
+}

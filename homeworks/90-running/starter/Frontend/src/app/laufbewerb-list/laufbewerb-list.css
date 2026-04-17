@@ -1,0 +1,15 @@
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.table {
+  grid-template-columns: 0.5fr 2fr 1.5fr 1.2fr 1fr 1.5fr 1.3fr;
+}
+
+.actions {
+  gap: 0.75rem;
+}

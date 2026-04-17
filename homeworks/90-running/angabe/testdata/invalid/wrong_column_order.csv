@@ -1,0 +1,8 @@
+Ungültige Datei – Spalten in falscher Reihenfolge
+
+Vorname,Nachname,Startnummer,AngestrebteGesamtzeit,KmNummer,Zeit
+Eva,Muster,1,25:00,1,4:50
+Eva,Muster,1,25:00,2,5:00
+Eva,Muster,1,25:00,3,5:05
+Eva,Muster,1,25:00,4,5:02
+Eva,Muster,1,25:00,5,5:03

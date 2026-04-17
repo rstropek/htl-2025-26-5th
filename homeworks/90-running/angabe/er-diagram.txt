@@ -1,0 +1,35 @@
+erDiagram
+    Laufkategorie ||--o{ Laufbewerb : "kategorisiert"
+    Laufbewerb ||--o{ Teilnehmer : "enthält"
+    Teilnehmer ||--o{ Split : "hat"
+
+    Laufkategorie {
+        int Id PK
+        string Bezeichnung "max 100 Zeichen"
+    }
+
+    Laufbewerb {
+        int Id PK
+        string Name "max 100 Zeichen"
+        int LaufkategorieId FK
+        decimal Streckenlänge "min 0.01, 2 Dezimalstellen"
+        date Datum
+        string Ort "max 100 Zeichen"
+    }
+
+    Teilnehmer {
+        int Id PK
+        int LaufbewerbId FK
+        int Startnummer "min 1, eindeutig je Bewerb"
+        string Vorname "max 100 Zeichen"
+        string Nachname "max 100 Zeichen"
+        int AngestrebteGesamtzeit "Sekunden, min 1"
+    }
+
+    Split {
+        int Id PK
+        int TeilnehmerId FK
+        int KmNummer "min 1"
+        int ZeitSekunden "min 1"
+        decimal SegmentLaenge "z.B. 1.00 oder 0.50"
+    }

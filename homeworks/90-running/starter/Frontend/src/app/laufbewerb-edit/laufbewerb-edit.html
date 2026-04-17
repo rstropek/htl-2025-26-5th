@@ -1,0 +1,61 @@
+<div class="container">
+  <!-- TODO: Add binding for title (different for add vs. edit) -->
+  <h1>{{ "title (Laufbewerb hinzufügen / Laufbewerb ändern)" }}</h1>
+
+  <!-- TODO: Show loading state while data is being fetched -->
+  <div class="state">Lade Daten...</div>
+
+  <!-- TODO: Show error state if loading/saving failed -->
+  <div class="state error">{{ "error message" }}</div>
+
+  <!-- TODO: Only display form when not loading -->
+  <form>
+    <div class="grid">
+      <div class="field">
+        <label for="name">Name</label>
+        <!-- TODO: Add formField binding and invalid class -->
+        <input id="name" type="text" />
+        <!-- TODO: Show validation errors when touched and invalid -->
+      </div>
+
+      <div class="field">
+        <label for="laufkategorieId">Laufkategorie</label>
+        <!-- TODO: Add formField binding and invalid class -->
+        <select id="laufkategorieId">
+          <!-- TODO: Repeat for each Laufkategorie -->
+          <option>{{ "kategorie.bezeichnung" }}</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="streckenlänge">Streckenlänge (km)</label>
+        <!-- TODO: Add formField binding and invalid class -->
+        <input id="streckenlänge" type="number" step="0.01" />
+        <!-- TODO: Show validation errors when touched and invalid -->
+      </div>
+
+      <div class="field">
+        <label for="datum">Datum</label>
+        <!-- TODO: Add formField binding and invalid class -->
+        <input id="datum" type="date" />
+        <!-- TODO: Show validation errors when touched and invalid -->
+      </div>
+
+      <div class="field">
+        <label for="ort">Ort</label>
+        <!-- TODO: Add formField binding and invalid class -->
+        <input id="ort" type="text" />
+        <!-- TODO: Show validation errors when touched and invalid -->
+      </div>
+    </div>
+
+    <div class="actions">
+      <!-- TODO: Add disabled state and event binding -->
+      <button type="button">
+        {{ "Speichere... / Speichern depending on saving state" }}
+      </button>
+      <!-- TODO: Add event binding and disabled state -->
+      <button type="button">Abbrechen</button>
+    </div>
+  </form>
+</div>
